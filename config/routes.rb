@@ -6,9 +6,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
   namespace :admin do
-    root to: "homes#top"
+    root to: "users#index"
     resources :users, only:[:index,:show,:edit,:update]
-    resources :genres, only:[:index,:create,:show,:edit,:update]
+    resources :genres, only:[:index,:create,:edit,:update]
 end
 
 
@@ -24,6 +24,7 @@ devise_for :users,skip: [:passwords], controllers: {
   scope module: :public do
     root to: 'homes#top'
     get "about" => "publick/homes#about"
+
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy]
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
