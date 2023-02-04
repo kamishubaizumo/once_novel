@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
 
       t.integer :user_id, null: false
       t.integer :novel_id, null: false
-      t.text :comment, null: false
+      t.text :comment
       t.float :star_rate
 
 

@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       t.string :name, null: false
       t.string :infomation
-      t.boolean :is_dalete, null: false
+      t.boolean :is_dalete, default: false
 
 
       t.timestamps null: false
