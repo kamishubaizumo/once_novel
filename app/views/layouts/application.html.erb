@@ -12,7 +12,7 @@
 
   <body>
     <header class="d-flex">
-      <nav class="navbar navbar-light bg-light fixed-top">
+      <nav class="navbar navbar-light bg-light w-100 ">
 
         <%= link_to root_path do %>
           <img src="" width="160px" height="70px">
@@ -20,9 +20,6 @@
 
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
-            <li>
-              【管理者】<%= current_user.name %>でログイン中
-            </li>
             <li>
               <%= link_to "ユーザー" %>
             </li>
@@ -42,11 +39,9 @@
             <li>
               <%= link_to "About" %>
             </li>
-
           <% end %>
         <% else %>
           <% if user_signed_in? %>
-
             <li>
               ユーザー名:<%= link_to user_path(current_user) do %>
                 <%= current_user.name %>

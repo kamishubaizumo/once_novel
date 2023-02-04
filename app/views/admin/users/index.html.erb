@@ -1,0 +1,14 @@
+<div class="mt-4 text-center">
+  <h2>ユーザー一覧</h2>
+</div>
+
+<table class="table">
+  <% @users.each do |users| %>
+    <%= link_to admin_user_path(users.id) do %>
+      <%= users.name %>
+    <% end %>
+
+    <%= users.is_delete  %>
+
+  <% end %>
+</table>

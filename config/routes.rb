@@ -27,7 +27,9 @@ devise_for :users,skip: [:passwords], controllers: {
 
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy]
+      #退会確認画面
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+      #論理削除のルーティング
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
 
 
