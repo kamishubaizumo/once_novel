@@ -13,8 +13,10 @@
 
 
 
-    <%= @genres.each do |genres| %>
+    <% @genres.each do |genres| %>
+    <%= link_to edit_admin_genre_path(genres.id) do %>
       <%= genres.genre %>
+      <% end %>
     <% end %>
 
   </div>
