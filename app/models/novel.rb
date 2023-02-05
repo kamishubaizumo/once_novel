@@ -22,9 +22,11 @@ class Novel < ApplicationRecord
 
   validates :logline, {
     presence: true,
-    length: {in 10..100}
+    length: {in: 10..100}
   }
 
-  
+
+  enum novel_status: {draft: false, published: true}
+
 
 end

@@ -4,6 +4,11 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.all
     @genre = Genre.new
 
+
+
+
+  # ジャンルの横にカウントを表示させたい。
+
   end
 
   def create

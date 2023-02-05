@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
 
-  enum is_deleted: {}
+  enum is_deleted: {退会済み: true, 有効: false}
 
 
 end
