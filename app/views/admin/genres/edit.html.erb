@@ -2,13 +2,24 @@
   <h2>ジャンル編集</h2>
 </div>
 
-<div class="container">
-  <div class="row">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 text-center mt-5">
 
-    <% form_with model: @genre do |f| %>
-      
-    
-    <% end %>
+      <%= form_with model:@genre, url:admin_genre_path, method: :patch do |f| %>
+        <table class="table mt-5 border-none">
+          <tr>
+            <th>
+              <%= f.text_field :genre %>
+            </th>
+            <td>
+              <%= f.submit "更新する", class: "btn btn-success" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
 
+        <%= link_to "戻る", admin_genres_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>

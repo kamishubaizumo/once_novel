@@ -2,3 +2,9 @@
   list-style: none;
 
 }
+
+
+/*主にテーブルのボーダが要らない時*/
+.border-none {
+  border: hidden;
+}

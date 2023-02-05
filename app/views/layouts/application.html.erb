@@ -21,7 +21,7 @@
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
             <li>
-              <%= link_to "ユーザー" %>
+              <%= link_to "ユーザー", admin_root_path %>
             </li>
             <li>
               <%= link_to "ジャンル", admin_genres_path%>
