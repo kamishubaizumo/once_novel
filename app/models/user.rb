@@ -15,8 +15,9 @@ class User < ApplicationRecord
 
   #退会したら、そのアカウントではログインできなくなる。
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (is_deleted == "有効")
   end
+  # == false　が原因でログインを弾かれた。"有効"にして解消。
 
 
   enum is_deleted: {退会済み: true, 有効: false}

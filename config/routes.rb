@@ -34,6 +34,7 @@ devise_for :users,skip: [:passwords], controllers: {
 
 
     resources :novels, only: [:index,:create,:show,:edit,:update,:destroy]
+    get "novels/write" => "novels#new", as: "write"
 
     #Review(comments)のルート
 

@@ -26,7 +26,8 @@ class Novel < ApplicationRecord
   }
 
 
-  enum novel_status: {draft: false, published: true}
+#非公開(下書き保存)にするか、公開(投稿)するか
+  # enum novel_status: {非公開: false, 公開: true}
 
 
 end

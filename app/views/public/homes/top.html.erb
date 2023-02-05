@@ -1,2 +1,36 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="mt-5 text-center">
+  <h1>Once-Novel</h1>
+</div>
+<div class="container text-center mt-5">
+  <p>短編小説向けの投稿サイトです。</p>
+  <p>タイトルの通り、<br>
+  <b>『一度、投稿したシナリオのアイディアが、いつか長編小説を執筆する時に役立てるかも』</b><br>
+  <b>『短編小説だから、一度の時間で読み切れる』</b><br>
+  というものをコンセプトで考えました。
+  </p>
+  <small>&#8251;架空のポートフォリオサイトです</pmall>
+
+<div class="container mt-5">
+  <div class="row d-flex d-wrap justify-content-center">
+
+
+
+      <div class="col-lg-2">
+        <%= link_to "今すぐ読む", novels_path %>
+      </div>
+      <% if user_signed_in? %>
+        <div class="col-lg-2"><%= link_to "今すぐ書く", write_path %></div>
+        <div class="col-lg-2"><%= link_to "マイページへ", user_path(current_user) %></div>
+      <% end %>
+
+      <% unless user_signed_in? %>
+        <div class="col-lg-2"><%= link_to "アカウントの作成はこちら", new_user_registration_path %></div>
+        <div class="col-lg-2"><%= link_to "ログインする", new_user_session_path %></div>
+      <% end %>
+
+
+
+
+
+  </div>
+</div>
