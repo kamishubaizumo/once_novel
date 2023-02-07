@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
 
-  belongs_to :novel
+  has_many :novel
 
 end

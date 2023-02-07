@@ -1,19 +1,41 @@
 <h2>ジャンル一覧</h2>
 <% @genres.each do |genres| %>
 
+
   <li><%= genres.genre %></li>
 
 <% end %>
 
 
-<h2>新着一覧</h2>
+<h2><%=  %></h2>
 
-<%= @novels.each do |novels| %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>作品名</th>
+      <th>ログライン</th>
+      <th>ジャンル</th>
+      <th>作家名</th>
+      </tr>
+  </thead>
 
-  <%= link_to novels_path(novel_id) do %>
-    <%= novels.title %>
+<% @novels.each do |novel| %>
+
+<tr>
+<tbody>
+<td>  <%= link_to novel_path(novel.id) do %>
+    <%= novel.title %>
   <% end %>
-  <%= novels.logline %>
-  <%= novels.user.name %>
-  <%= nobels.genre %>
+</td>
+  <td><%= novel.logline %></td>
+  <td><%= novel.genre_id %></td>
+  <td>
+    <%= link_to user_path(novel.user.id) do %>
+      <%= novel.user.name %>
+    <% end %>
+  </td>
+</tr>
+</tbody>
 <% end %>
+
+</table>

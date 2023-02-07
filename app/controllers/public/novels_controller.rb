@@ -3,6 +3,8 @@ class Public::NovelsController < ApplicationController
   def index
     @novels = Novel.all
     @genres = Genre.all
+    
+
   end
 
   def show
@@ -10,23 +12,38 @@ class Public::NovelsController < ApplicationController
   end
 
   def new
+    #新規投稿
     @write = Novel.new
+
+    #非公開か公開を選ぶ
+
 
 
   end
 
   def create
-    @wirte = Novel.new(write_nobel_params)
-    @write = user_id = current_user.id
-    @write.save
-    redirect_to novel_path(@write.id)
+    @write = Novel.new(write_nobel_params)
+    @write.user_id = current_user.id
+
+    if @write.save
+      redirect_to novel_path(@write.id)
+    else
+      render :new
+    end
+
+    #選んだジャンルで登録
+    #非公開、公開で登録。
 
   end
 
   def edit
+
+    #ジャンルを変更する
+    #非公開、公開を変更する
   end
 
   def update
+
   end
 
   def destroy
@@ -36,7 +53,7 @@ class Public::NovelsController < ApplicationController
   private
 
   def write_nobel_params
-    params.require(:novel).permit(:title, :logline, :foreword, :body, :afterword,:novel_status)
+    params.require(:novel).permit(:title, :logline, :foreword, :body, :afterword, :novel_status, :genre_id)
   end
 
 end
