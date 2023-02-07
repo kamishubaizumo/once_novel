@@ -17,27 +17,38 @@
         <%= link_to root_path do %>
           <img src="" width="160px" height="70px">
         <% end %>
-
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
             <li>
-              <%= link_to "ユーザー", admin_root_path %>
+              <%= link_to admin_root_path do %>
+                <i class="fas fa-users"></i>ユーザー
+              <% end %>
             </li>
             <li>
-              <%= link_to "ジャンル", admin_genres_path%>
+              <%= link_to admin_genres_path do %>
+                <i class="fas fa-hashtag"></i>ジャンル
+              <% end %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
             </li>
           <% else %>
             <li>
-              <%= link_to "新規登録", new_user_registration_path %>
+               <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus"></i>新規登録
+              <% end %>
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt"></i>ログイン
+              <% end %>
             </li>
             <li>
-              <%= link_to "About" %>
+              <%= link_to about_path do %>
+                <i class="fas fa-scroll"></i>About
+              <% end %>
             </li>
           <% end %>
         <% else %>
@@ -48,34 +59,52 @@
               <% end %>でログイン中
             </li>
             <li>
-              <%= link_to "執筆する"%>
+              <%= link_to novel_write_path do %>
+                <i class="fas fa-pen-nib"></i>執筆する
+              <% end %>
             </li>
             <li>
-              <%= link_to "作品を読む"%>
+              <%= link_to novels_path do %>
+                <i class="fas fa-book-reader"></i>作品を読む
+              <% end %>
             </li>
             <li>
-              <%= link_to "ブックマーク"%>
+              <%= link_to  do %>
+                <i class="fas fa-bookmark"></i>ブックマーク
+              <% end %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
             </li>
           <% else %>
             <li>
-              <%= link_to "新規登録", new_user_registration_path %>
+              <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus"></i>新規登録
+              <% end %>
+
+
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt"></i>ログイン
+              <% end %>
             </li>
             <li>
-              <%= link_to "作品を読む" %>
+              <%= link_to novels_path do %>
+                <i class="fas fa-book-reader"></i>作品を読む
+              <% end %>
             </li>
             <li>
-              <%= link_to "About" %>
+              <%= link_to about_path do %>
+                 <i class="fas fa-scroll"></i>About
+              <% end %>
             </li>
           <% end %>
         <% end %>
 
-          <li>検索欄</li>
+          <li><i class="fas fa-search"></i>検索欄</li>
 
 
         </nav>
