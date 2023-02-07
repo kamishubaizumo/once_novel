@@ -31,7 +31,7 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="far fa-sign-out"></i>ログアウト
+                <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
           <% else %>
@@ -47,7 +47,7 @@
             </li>
             <li>
               <%= link_to about_path do %>
-                <i class="fas fa-scroll-old"></i>About
+                <i class="fas fa-scroll"></i>About
               <% end %>
             </li>
           <% end %>
@@ -59,7 +59,7 @@
               <% end %>でログイン中
             </li>
             <li>
-              <%= link_to write_path do %>
+              <%= link_to novel_write_path do %>
                 <i class="fas fa-pen-nib"></i>執筆する
               <% end %>
             </li>
@@ -74,7 +74,9 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
             </li>
           <% else %>
             <li>
@@ -96,7 +98,7 @@
             </li>
             <li>
               <%= link_to about_path do %>
-                <i class="fas fa-scroll-old"></i>About
+                 <i class="fas fa-scroll"></i>About
               <% end %>
             </li>
           <% end %>

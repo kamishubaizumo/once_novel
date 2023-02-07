@@ -1,0 +1,42 @@
+<div class="text-center mt-5">
+  <h2>新規作成</h2>
+</div>
+
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+
+<%= form_with model: @wirite do |f| %>
+  <h5>タイトル(2～50文字)</h5>
+  <%= f.text_field :title, size: 100 %>
+
+<!--カラムに登録してある値のジャンルを選択-->
+<h5>ジャンルの選択</h5>
+
+ジャンルをselect boxで選ぶ
+
+<h5>ログライン(10～100文字)</h5>
+<%= f.text_area :logline, size: "100x2" %>
+
+<h5>前書き(0～300)</h5>
+<%= f.text_area :foreword, size: "100x5" , class: "textSample"%>
+
+<h5>本文(10～6000)</h5>
+<%= f.text_area :body, size: "100x100" %>
+
+<h5>後書き(0~300)</h5>
+<%= f.text_area :afterword, size: "100x5" %>
+
+
+
+<!--公開・非公開を選ぶ-->
+      　<%= f.label "公開範囲を選択" %><br>
+      　<%= f.select :novel_status,[["公開","公開"],["非公開","非公開"],["下書き保存","下書き保存"]]  %>
+
+
+
+<%= f.submit "投稿する" %>
+<% end %>
+
+</div>
+</div>

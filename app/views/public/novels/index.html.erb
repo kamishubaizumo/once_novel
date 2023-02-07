@@ -1,0 +1,19 @@
+<h2>ジャンル一覧</h2>
+<% @genres.each do |genres| %>
+
+  <li><%= genres.genre %></li>
+
+<% end %>
+
+
+<h2>新着一覧</h2>
+
+<%= @novels.each do |novels| %>
+
+  <%= link_to novels_path(novel_id) do %>
+    <%= novels.title %>
+  <% end %>
+  <%= novels.logline %>
+  <%= novels.user.name %>
+  <%= nobels.genre %>
+<% end %>

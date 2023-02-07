@@ -1,1 +1,39 @@
-show
+<div class="text-center mt-5">
+  <h2>ユーザーネーム：<%= @user.name %></h2>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <h3>投稿一覧</h3>
+      <%= @novels.each do |novels| %>
+
+        <%= novels.title %>
+        <%= novels.logline %>
+          <!--コメント数-->
+          <!--評価の平均値-->
+      <% end %>
+
+
+
+      <% if current_user %>
+      <div class="col">
+        <h3>下書き(非公開)一覧</h3>
+        <%= @novels.each do%>
+
+        <% end %>
+      </div>
+      <% end %>
+  <!--コメント数-->
+  <!--評価の平均値-->
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3>ブックマーク一覧</h3>
+    </div>
+
+    <div class="col">
+      <h3>フォロー/フォロワー</h3>
+    </div>
+  </div>
+</div>

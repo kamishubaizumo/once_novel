@@ -23,7 +23,7 @@ devise_for :users,skip: [:passwords], controllers: {
 }
   scope module: :public do
     root to: 'homes#top'
-    get "about" => "publick/homes#about"
+    get "about" => "homes#about"
 
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy]
@@ -34,7 +34,8 @@ devise_for :users,skip: [:passwords], controllers: {
 
 
     resources :novels, only: [:index,:create,:show,:edit,:update,:destroy]
-    get "novels/write" => "novels#new", as: "write"
+    get "novel/write" => "novels#new"
+    post "novel/write" => "novels#new"
 
     #Review(comments)のルート
 
