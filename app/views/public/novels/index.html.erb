@@ -1,13 +1,25 @@
 <h2>ジャンル一覧</h2>
-<% @genres.each do |genres| %>
+  <% @genres.each do |genres| %>
+    <li><%= genres.genre %></li>
+  <% end %>
 
 
-  <li><%= genres.genre %></li>
+管理者側で追加したジャンルを、novelに紐づけて保存する
+しかし、paramsには、id情報しかなく、文字列が出てこない。
+これはどうすれば解決するだろうか。
 
-<% end %>
+現在、ジャンルがnovelを持っている状態になっている。
+しかし、逆にすると、管理者側で追加できなくなってしまう。
+
+novelが、既存のジャンルを持つようにするにはどうすればいいのか
+
+中間テーブルを新たに作るしかない？
 
 
-<h2><%=  %></h2>
+
+
+
+<h2> novel一覧</h2>
 
 <table class="table">
   <thead>
