@@ -3,7 +3,8 @@ class Public::NovelsController < ApplicationController
   def index
     @novels = Novel.all
     @genres = Genre.all
-    
+
+
 
   end
 
