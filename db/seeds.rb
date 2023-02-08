@@ -11,3 +11,15 @@ Admin.create!(
   email: "kkk@kkk",
   password: "kkkkkk",
   )
+
+
+Genre.create([
+  { genre: "ファンタジー" },
+  { genre: "ラブコメ" },
+  { genre: "SF(ｻｲｴﾝｽﾌｨｸｼｮﾝ)" },
+  { genre: "伝奇・ホラー" },
+  { genre: "推理・ミステリ" },
+  { genre: "文芸・文学" },
+  { genre: "エッセイ" },
+  { genre: "BL" }
+])

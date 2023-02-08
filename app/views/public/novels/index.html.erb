@@ -1,25 +1,28 @@
+
+<p class="alert alert-danger">管理者側で追加したジャンルを、novelに紐づけて保存する仕様にしている。
+しかし現状、paramsには、id情報しかなく、文字列の値が出てこない。これはどうすれば解決するだろうか。
+<br>
+現在、ジャンルがnovelを持っている状態になっている。
+一覧画面で、ジャンルを表示するやり方が、わからない。
+</p>
+
+
+<div class="container-flid mt-5">
+<div class="row">
+<div class="col-lg-3 text-center">
+
 <h2>ジャンル一覧</h2>
   <% @genres.each do |genres| %>
-    <li><%= genres.genre %></li>
+    <li class="my-2 "><%= genres.genre %></li>
   <% end %>
+</div>
 
 
-管理者側で追加したジャンルを、novelに紐づけて保存する
-しかし、paramsには、id情報しかなく、文字列が出てこない。
-これはどうすれば解決するだろうか。
+<%=  %>
 
-現在、ジャンルがnovelを持っている状態になっている。
-しかし、逆にすると、管理者側で追加できなくなってしまう。
+<div class="col">
 
-novelが、既存のジャンルを持つようにするにはどうすればいいのか
-
-中間テーブルを新たに作るしかない？
-
-
-
-
-
-<h2> novel一覧</h2>
+<h2>novel一覧</h2>
 
 <table class="table">
   <thead>
@@ -40,7 +43,7 @@ novelが、既存のジャンルを持つようにするにはどうすればい
   <% end %>
 </td>
   <td><%= novel.logline %></td>
-  <td><%= novel.genre_id %></td>
+  <td><%= novel.genres %></td>
   <td>
     <%= link_to user_path(novel.user.id) do %>
       <%= novel.user.name %>
@@ -51,3 +54,7 @@ novelが、既存のジャンルを持つようにするにはどうすればい
 <% end %>
 
 </table>
+
+</div>
+</div>
+</div>

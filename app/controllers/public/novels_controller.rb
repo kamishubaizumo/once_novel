@@ -2,14 +2,20 @@ class Public::NovelsController < ApplicationController
 
   def index
     @novels = Novel.all
-    @genres = Genre.all
+    
 
+
+    @genres = Genre.all
+    @tag = Tag.all
 
 
   end
 
   def show
     @novel = Novel.find(params[:id])
+    @genre = Genre.find(params[:id])
+
+
   end
 
   def new
@@ -54,7 +60,7 @@ class Public::NovelsController < ApplicationController
   private
 
   def write_nobel_params
-    params.require(:novel).permit(:title, :logline, :foreword, :body, :afterword, :novel_status, :genre_id)
+    params.require(:novel).permit(:title, :logline, :foreword, :body, :afterword, :novel_status, :genre)
   end
 
 end
