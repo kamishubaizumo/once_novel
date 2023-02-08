@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_04_082355) do
+ActiveRecord::Schema.define(version: 2023_02_08_032328) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 2023_02_04_082355) do
     t.string "title", null: false
     t.text "body", null: false
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
     t.integer "novel_status", default: 0, null: false
     t.text "foreword"
     t.text "afterword"
@@ -90,6 +89,13 @@ ActiveRecord::Schema.define(version: 2023_02_04_082355) do
     t.integer "novel_id", null: false
     t.text "comment"
     t.float "star_rate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "novel_id"
+    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

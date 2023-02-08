@@ -2,7 +2,14 @@ class Novel < ApplicationRecord
 
   belongs_to :user
   has_many :reviews, dependent: :destroy
-  has_many :genre, dependent: :destroy
+
+  #ノベルとジャンルの中間テーブル
+  has_many :tags, dependent: :destroy
+
+  #ジャンル(タグ)の中間テーブルを介した関連付け
+  has_many :genres, through: :tags, dependent: :destroy
+  accepts_nested_attributes_for :tags
+
   has_many :bookmark, dependent: :destroy
 
 

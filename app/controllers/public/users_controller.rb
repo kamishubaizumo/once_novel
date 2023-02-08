@@ -8,9 +8,7 @@ class Public::UsersController < ApplicationController
     @novels = @user.novels
 
 
-    # @pub_novels =
-    # @pub_novels.find_by()
-    # @pri_novels =
+
 
   end
 

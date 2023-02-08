@@ -1,53 +1,60 @@
-<h2>ジャンル一覧</h2>
-  <% @genres.each do |genres| %>
-    <li><%= genres.genre %></li>
-  <% end %>
 
-
-管理者側で追加したジャンルを、novelに紐づけて保存する
-しかし、paramsには、id情報しかなく、文字列が出てこない。
-これはどうすれば解決するだろうか。
-
+<p class="alert alert-danger">管理者側で追加したジャンルを、novelに紐づけて保存する仕様にしている。
+しかし現状、paramsには、id情報しかなく、文字列の値が出てこない。これはどうすれば解決するだろうか。
+<br>
 現在、ジャンルがnovelを持っている状態になっている。
-しかし、逆にすると、管理者側で追加できなくなってしまう。
-
-novelが、既存のジャンルを持つようにするにはどうすればいいのか
-
-中間テーブルを新たに作るしかない？
+一覧画面で、ジャンルを表示するやり方が、わからない。
+</p>
 
 
+<div class="container-flid mt-5">
+  <div class="row">
+    <div class="col-lg-3 text-center">
+
+      <h2>ジャンル一覧</h2>
+        <% @genres.each do |genre| %>
+
+      <li class="my-2 "><%= link_to genre.genre,novels_path(genre_id: genre.id) %></li>
+        <% end %>
+    </div>
 
 
 
-<h2> novel一覧</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>作品名</th>
-      <th>ログライン</th>
-      <th>ジャンル</th>
-      <th>作家名</th>
-      </tr>
-  </thead>
+<div class="col">
 
-<% @novels.each do |novel| %>
+<h2><%= @index %>一覧</h2>
 
-<tr>
-<tbody>
-<td>  <%= link_to novel_path(novel.id) do %>
-    <%= novel.title %>
-  <% end %>
-</td>
-  <td><%= novel.logline %></td>
-  <td><%= novel.genre_id %></td>
-  <td>
-    <%= link_to user_path(novel.user.id) do %>
-      <%= novel.user.name %>
-    <% end %>
-  </td>
-</tr>
-</tbody>
-<% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>作品名</th>
+          <th>ログライン</th>
+          <th>作家名</th>
+        </tr>
+      </thead>
 
-</table>
+      <% @novels.each do |novel| %>
+
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to novel_path(novel.id) do %>
+              <%= novel.title %>
+            <% end %>
+          </td>
+          <td><%= novel.logline %></td>
+          <td>
+            <%= link_to user_path(novel.user.id) do %>
+              <%= novel.user.name %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+
+    </table>
+
+    </div>
+  </div>
+</div>
