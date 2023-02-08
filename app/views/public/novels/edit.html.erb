@@ -1,1 +1,43 @@
-作品の編集
+<div class-"text-center mt-5">
+  <h2>作品編集</h2>
+</div>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <%= form_with model: @novel do |f| %>
+      <lavel for="inputTitle">タイトル</lavel>
+      <%= f.text_field :title, autofocus: true, size: 100, id: "inputTitle", class: "form-control" %>
+
+      <div class="my-2">
+        <lavel>ジャンルの選択</lavel>
+        <!--ジャンルをselect boxで選ぶ-->
+        <%= f.collection_select :genre_id, Genre.all, :id, :genre %>
+      </div>
+
+      <lavel for="inputLogline">ログライン</lavel>
+        <%= f.text_area :logline, autofocus: true, size: "100x2", id: "inputLogline", class: "form-control"  %>
+
+      <lavel for="inputForeword">前書き</lavel>
+        <%= f.text_area :foreword, autofocus: true, size: "100x5", id: "inputForeword", class: "form-control"  %>
+
+      <lavel for="inputBody">本文</lavel>
+        <%= f.text_area :body, autofocus: true,size: "100x50", id: "inputBody", class: "form-control"  %>
+
+      <lavel for="inputAfterword">後書き</lavel>
+        <%= f.text_area :afterword, autofocus: true, size: "100x5", id: "inputAfterword", class: "form-control"  %>
+
+
+      <div class="row text-center mt-3 d-flex">
+        <div class="col">
+        <%= f.submit "更新", class: "btn btn-success" %>
+        </div>
+
+        <div class="col">
+
+        <%= f.label :novel_status, "公開範囲を選択" %>
+      　<%= f.select :novel_status,[["公開","公開"],["非公開","非公開"]]  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

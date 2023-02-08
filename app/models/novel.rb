@@ -8,6 +8,7 @@ class Novel < ApplicationRecord
 
   #ジャンル(タグ)の中間テーブルを介した関連付け
   has_many :genres, through: :tags, dependent: :destroy
+  accepts_nested_attributes_for :tags
 
   has_many :bookmark, dependent: :destroy
 
