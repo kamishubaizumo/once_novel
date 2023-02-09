@@ -1,0 +1,43 @@
+<%= @novel.title %>一覧の感想一覧
+
+<!--感想記入-->
+<%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
+  <%= f.label :comment %><br>
+  <%= f.text_area :coment, autofocus: true, size: "50x5", class: "form-control" %>
+  <%= f.submit "投稿", class: "btn btn-success" %>
+<% end %>
+
+<!--評価記入-->
+<div id="star">
+  <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
+    <%= f.label :star_rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :star_rate, id: :review %>
+  <% end %>
+</div>
+
+
+<div id="star"></div>
+<script>
+  // scriptファイルをどのidの部分に配置するかを指定
+  let elem = document.querySelector('#star');
+  let opt = {
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[rate]',
+    half: true,
+    //星画像の指定などのオプションをここに記述,
+   };
+  raty(elem,opt);
+</script>
+
+<!--コメント一覧-->
+<% @reviews.each do |review| %>
+  <%= review.user.name %>
+  <%= review.comment %>
+  <%= review.star_rate %>
+<% end %>
+
+
+

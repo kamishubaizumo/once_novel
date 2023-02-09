@@ -36,7 +36,8 @@
     <div class="row">
       <div class="col">
 
-        <%= link_to "感想を書く", class: "btn btn-secondary" %>
+        <%= link_to "感想を書く",novel_reviews_path(novel_id: @novel.id), class: "btn btn-secondary" %>
+
         <% if @novel.user == current_user %>
           <%= link_to "編集する", edit_novel_path ,class: "btn btn-primary" %>
       </div>
