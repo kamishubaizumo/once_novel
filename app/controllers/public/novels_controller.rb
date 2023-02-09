@@ -71,6 +71,7 @@ class Public::NovelsController < ApplicationController
 
     @novel = Novel.find(params[:id])
 
+
     #ジャンルを変更する
     #非公開、公開を変更する
   end
@@ -91,6 +92,10 @@ class Public::NovelsController < ApplicationController
   end
 
   def destroy
+    @novel = Novel.find(params[:id])
+    @novel.destroy
+    redirect_to user_path(current_user)
+
   end
 
   # 投稿データのストロングパラメータ
