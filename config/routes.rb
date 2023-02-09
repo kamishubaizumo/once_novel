@@ -39,11 +39,15 @@ devise_for :users,skip: [:passwords], controllers: {
       get "followings" => "relationships#followings", as: "followslist"
       get "followers" => "relationships#followers", as: "followerslist"
     end
+
+
+    resources :novels, only: [:index,:new,:create,:show,:edit,:update,:destroy] do
     
-    
-    resources :novels, only: [:index,:create,:show,:edit,:update,:destroy]
-    get "novel/write" => "novels#new"
-    post "novel/write" => "novels#new"
+
+
+    resources :reviews, only: [:index,:create,:edit,:update]
+
+    end
 
     #Review(comments)のルート
 

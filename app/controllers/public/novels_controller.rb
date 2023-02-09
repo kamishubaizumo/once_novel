@@ -28,12 +28,16 @@ class Public::NovelsController < ApplicationController
 
   end
 
+
+
+  def draft
+    @novels = @Novel.all
+    @private_novel = @novel.params(novel_status: "非公開")
+  end
+
+
   def show
     @novel = Novel.find(params[:id])
-
-
-
-
   end
 
   def new
@@ -42,8 +46,6 @@ class Public::NovelsController < ApplicationController
 
 
     #非公開か公開を選ぶ
-
-
 
   end
 
