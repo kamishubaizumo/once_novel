@@ -58,6 +58,8 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     #ジャンルを変更する
     #非公開、公開を変更する
+
+
   end
 
 
@@ -65,8 +67,17 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
 
     if @novel.update(write_novel_params)
-      #タグを更新。novelとgenre_idを更新
-       @tag = Tag.update(novel_id: @novel.id,genre_id: params[:novel][:genre_id])
+      #novel.tags.first ノベルの最初に選んだタグ(中間テーブル)がnil(無い)場合
+      if @novel.tags.first == nil
+        #タグを新たにノベルIDと紐づける。　ノベルidとジャンルIDを紐づける。ここはまだ理解できていない。
+        @tag = Tag.new(novel_id: @novel.id, genre_id: params[:novel][:genre_id])
+
+        #タグをセーブ
+        @tag.save()
+      else
+        #対象を選んで、ノベルの最初のタグを更新。ノベルIDは、ノベルのIDとジャンルID。ノベルのジャンルIDを更新。
+        @tag = @novel.tags.first.update(novel_id: @novel.id, genre_id: params[:novel][:genre_id])
+      end
       flash[:notice] = "更新に成功しました"
       redirect_to novel_path(@novel.id)
     end
