@@ -7,7 +7,9 @@
      <td><%= @user.name %>
 
      <% if current_user %>
-       &nbsp; <%= link_to "編集する", edit_user_path ,class: "btn btn-primary" %>
+       &nbsp; <%= link_to edit_user_path ,class: "btn btn-primary" do %>
+         <i class="fas fa-user-cog"></i>
+       <% end %>
      <% end %></td>
      <td>
 

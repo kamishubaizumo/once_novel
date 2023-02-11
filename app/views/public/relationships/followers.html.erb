@@ -1,11 +1,43 @@
-フォロワー
+<div class="mt-5 text-center">
+  <h2>フォローリスト</h2>
+</div>
 
-<% if @users.exists? %>
-<% @users.each do |user| %>
- <%= user.name %>
- <%= render "public/relationships/follow", user: @user  %>
- <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th>ユーザーネーム</th>
+            <th>作品数</th>
+            <th> </th>
+          </tr>
+        </thead>
+          <% if @users.exists? %>
+            <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(user.id) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= user.novels.count %>
+              </td>
+              <td>
+                <%= render "public/relationships/follow", user: user  %>
+              </td>
+            </tr>
+          </tbody>
 
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+            <% end %>
+          <% else %>
+            <div class="mt-5 text-center">
+              <h3>ユーザーはいません</h3>
+            </div>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>

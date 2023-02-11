@@ -35,7 +35,9 @@ devise_for :users,skip: [:passwords], controllers: {
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
       #論理削除のルーティング
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
-      resources :relationships, only: [:create,:destroy]
+
+    #フォロー・フォロワー
+      resource :relationships, only: [:create,:destroy]
       get "followings" => "relationships#followings", as: "followslist"
 
       get "followers" => "relationships#followers", as: "followerslist"
