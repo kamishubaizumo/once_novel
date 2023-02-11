@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
    <table class="table col-lg-8">
    <tr>
-     <td><%= @user.name %></td><td>フォローボタン</td>
+     <td><%= @user.name %><% if current_user %> &nbsp; <%= link_to "編集する", edit_user_path ,class: "btn btn-primary" %><% end %></td><td>フォローボタン</td>
    </tr>
    <tr>
      <td>ブックマーク</td><td>お気に入りユーザー</td>

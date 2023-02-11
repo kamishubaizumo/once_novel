@@ -1,19 +1,27 @@
 <div class="container text-center mt-5">
-  <h3><%= @novel.title %></h2>
-    <p class="pt-3 text-right">作者：<%= @novel.user.name %></p>
 
-  <div class="col justify-content-center">
-    <%= @novel.logline %></p>
-    <div class="col">
+    <p class="pt-3 text-right">
+      作者：
+      <%= link_to user_path(@novel.user.id) do %>
+        <%= @novel.user.name %></p>
+      <% end %>
+      <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
 
-    <p class="text-right">ジャンル:
-      <% @novel.genres.each do |genre|%>
-        <%= genre.genre %>
-      <% end %></p>
 
+        <div class="col">
       <p class="text-right">ブックマーク</p>
     </div>
-  </div>
+
+    <div class="col justify-content-center">
+      <h2><%= @novel.title %></h2><br>
+        <p class="text-right">ジャンル:
+          <% @novel.genres.each do |genre|%>
+            <%= genre.genre %>
+          <% end %>
+        </p>
+      <%= @novel.logline %></p>
+
+    </div>
 </div>
 
 

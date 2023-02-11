@@ -1,4 +1,5 @@
 class Public::NovelsController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
 
@@ -24,6 +25,7 @@ class Public::NovelsController < ApplicationController
 
   def show
     @novel = Novel.find(params[:id])
+
   end
 
   def new
@@ -86,5 +88,16 @@ class Public::NovelsController < ApplicationController
                                   tags_attributes: [:id, :genre_id])
   end
 
+
+
+  # 他人が他人の作品を編集できないように、editページに行くと遷移させる。
+    def is_matching_login_user
+      @novel = Novel.find(params[:id])
+      user_id = @novel.user.id
+      login_user_id = current_user.id
+      if(user_id != login_user_id)
+        redirect_to novels_path
+      end
+    end
 
 end

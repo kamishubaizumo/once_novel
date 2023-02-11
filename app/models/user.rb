@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :novels, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  
+  validates :name, length: {in: 2..10}
+  validates :infomation, length: { maximum: 100}
 
 
 
