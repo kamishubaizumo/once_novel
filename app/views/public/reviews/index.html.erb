@@ -1,16 +1,23 @@
-<%= @novel.title %>一覧の感想一覧
+<div class="mt-5 text-center">
+<h2>【<%= @novel.title %>】の感想一覧</h2>
+<p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
 
 <!--感想記入-->
 <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
-  <%= f.label :comment %><br>
+  <%= f.label :comment,"感想を書く" %><br>
   <%= f.text_area :comment, autofocus: true, size: "50x5", class: "form-control" %>
-  <%= f.submit "投稿", class: "btn btn-success" %>
+  <%= f.submit "投稿", class: "btn btn-success mt-3" %>
 <% end %>
 
 <!--評価記入-->
-<div id="star">
+<div id="star justify-content-left">
   <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
-    <%= f.label :star_rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.label :star_rate,'評価する', class:'col-md-3 col-form-label' %>
     <%= f.hidden_field :star_rate, id: :review %>
   <% end %>
 </div>
@@ -32,12 +39,18 @@
   raty(elem,opt);
 </script>
 
+
 <!--コメント一覧-->
+<h4>感想一覧</h4>
+<div class="row">
 <% @novel.reviews.each do |review| %>
-  <%= review.user.name %>
-  <%= review.comment %>
-  <%= review.star_rate %>
+  <%= review.user.name %><br>
+  <%= review.comment %><br>
+  <%= review.star_rate %><br>
 <% end %>
+</div>
 
 
-
+    </div>
+  </div>
+</div>

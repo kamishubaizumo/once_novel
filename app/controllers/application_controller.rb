@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_admin!, if: :admin_url
 
+
+
+  #URLにadminが含まれているかの確認
+    def admin_url
+      request.fullpath.include?("/admin")
+    end
 
 
 
