@@ -7,6 +7,7 @@ class Public::ReviewsController < ApplicationController
     @reviews = @novel.reviews
 
 
+
   end
 
   def create
@@ -21,7 +22,7 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id]).destroy
-    redirect_to :index
+    redirect_to novel_reviews_path
 
   end
 

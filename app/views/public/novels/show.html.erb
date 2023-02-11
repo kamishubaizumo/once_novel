@@ -33,7 +33,7 @@
     </div>
 
     <div class="col-lg-9 my-3 border text">
-      <%= h(@novel.body).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>
+      <%= h(@novel.body).gsub(/\r|\r\n/, "<br>").html_safe %></p>
     </div>
 
       <div class="col-lg-9 my-3 py-4 border">
