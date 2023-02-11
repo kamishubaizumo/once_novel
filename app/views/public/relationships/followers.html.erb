@@ -1,1 +1,11 @@
-<%= render "relationsips/follow", users: @users %>
+フォロワー
+<% if @users.exists? %>
+
+<% @users.each do |user| %>
+ <%= user.name %>
+ <%= render "relationships/follow", user: @user  %>
+ 
+
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
