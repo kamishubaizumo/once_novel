@@ -42,14 +42,12 @@ devise_for :users,skip: [:passwords], controllers: {
 
 
     resources :novels, only: [:index,:new,:create,:show,:edit,:update,:destroy] do
-    
-
-
-    resources :reviews, only: [:index,:create,:edit,:update]
+      resources :reviews, only: [:index,:create,:destroy]
+ 
 
     end
 
-    #Review(comments)のルート
+
 
     #relation
 

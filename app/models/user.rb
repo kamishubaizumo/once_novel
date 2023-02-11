@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
+  validates :name, length: {in: 2..10}
+  validates :infomation, length: { maximum: 100}
+
 
 
 # フォローをした、されたの関係
@@ -44,5 +47,7 @@ end
 
   enum is_deleted: {退会済み: true, 有効: false}
 
+
+#ユーザーadmin側にアクセスできないようにするには？？
 
 end
