@@ -10,21 +10,22 @@
        &nbsp; <%= link_to "編集する", edit_user_path ,class: "btn btn-primary" %>
      <% end %></td>
      <td>
-       フォローボタン
-
-<% render "relationships/follow", user: @user%>
-
-<%= link_to "フォローリスト", user_followslist_path(@user) %>
 
 
-<%= link_to "フォロワーリスト", user_followerslist_path(@user) %>
+<%= render "public/relationships/follow", user: @user %>
+
+
 
 
 
        </td>
    </tr>
    <tr>
-     <td>ブックマーク</td><td>お気に入りユーザー</td>
+     <td>ブックマーク</td>
+     <td>
+       <%= link_to "フォローリスト", user_followslist_path(@user) %> /
+       <%= link_to "フォロワーリスト", user_followerslist_path(@user) %>
+     </td>
     </tr>
    </table>
   </div>

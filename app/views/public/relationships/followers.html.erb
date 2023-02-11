@@ -1,10 +1,10 @@
 フォロワー
-<% if @users.exists? %>
 
+<% if @users.exists? %>
 <% @users.each do |user| %>
  <%= user.name %>
- <%= render "relationships/follow", user: @user  %>
- 
+ <%= render "public/relationships/follow", user: @user  %>
+<% end %>
 
 <% else %>
   <p>ユーザーはいません</p>

@@ -38,6 +38,7 @@ devise_for :users,skip: [:passwords], controllers: {
       resources :relationships, only: [:create,:destroy]
       get "followings" => "relationships#followings", as: "followslist"
       get "followers" => "relationships#followers", as: "followerslist"
+      
     end
 
 
