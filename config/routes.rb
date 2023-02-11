@@ -37,14 +37,15 @@ devise_for :users,skip: [:passwords], controllers: {
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
       resources :relationships, only: [:create,:destroy]
       get "followings" => "relationships#followings", as: "followslist"
+
       get "followers" => "relationships#followers", as: "followerslist"
-      
+
     end
 
 
     resources :novels, only: [:index,:new,:create,:show,:edit,:update,:destroy] do
       resources :reviews, only: [:index,:create,:destroy]
- 
+
 
     end
 

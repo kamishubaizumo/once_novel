@@ -4,7 +4,7 @@
 <% @users.each do |user| %>
  <%= user.name %>
  <%= render "public/relationships/follow", user: @user  %>
-<% end %>
+ <% end %>
 
 <% else %>
   <p>ユーザーはいません</p>
