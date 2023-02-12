@@ -7,15 +7,16 @@
       <% end %>
       <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
 
-
-        <div class="col">
-      <p class="text-right">ブックマーク</p>
-    </div>
-
     <div class="col justify-content-center">
       <h2><%= @novel.title %></h2><br>
+
+        <div class="col">
+          <!--ブックマーク-->
+          <%= render "public/bookmarks/bookmark", novel: @novel %>
+        </div>
+
         <p class="text-right">ジャンル:
-          <% @novel.genres.each do |genre|%>
+          <% @novel.genres.each do |genre| %>
             <%= genre.genre %>
           <% end %>
         </p>
@@ -23,6 +24,15 @@
 
     </div>
 </div>
+
+
+
+
+
+
+
+
+
 
 
 <div class="container text-center">
@@ -58,3 +68,7 @@
 </div>
 
 <div class="text-right pr-5 pb-5"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
+
+
+
+<div><余裕がありそうなら実装する機能><br>前の作品を読む/次の作品を読む<vr>もし、非公開なら公開しているものまで繰り返して遷移<実行>する<br>もし、前/次の作品が無ければリンクを非表示。</div>

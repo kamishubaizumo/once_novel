@@ -11,7 +11,11 @@
       <div class="my-2">
         <lavel>ジャンルの選択</lavel>
         <!--ジャンルをselect boxで選ぶ-->
-        <%= f.collection_select :genre_id,Genre.all, :id, :genre %>
+        <% if @novel.tags.first == nil %>
+          <%= f.collection_select :genre_id,Genre.all, :id, :genre %>
+        <% else %>
+          <%= f.collection_select :genre_id,Genre.all, :id, :genre, selected: @novel.tags.first.genre_id %>
+        <% end %>
       </div>
 
       <lavel for="inputLogline">ログライン</lavel>
