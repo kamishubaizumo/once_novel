@@ -37,8 +37,8 @@ class Novel < ApplicationRecord
   #ユーザーIDが存在？するかどうかを調べる。存在していれば、trueを返す
  def bookmarked_by?(user)
     # favorites.exists?(user_id: user.id)
-    bookmarks.where(user_id: user).exists?
-  end
+    bookmark.where(user_id: user).exists?
+ end
 
 #非公開(下書き保存)にするか、公開(投稿)するか
    enum novel_status: {公開: 0, 非公開: 1, 下書き保存: 2}

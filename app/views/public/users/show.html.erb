@@ -4,29 +4,42 @@
    <tr>
 
       <!--カレントユーザーにしか表示しないようにしたいのに、うまくいかない。-->
-     <td><%= @user.name %>
-
-     <% if current_user %>
-       &nbsp; <%= link_to edit_user_path ,class: "btn btn-primary" do %>
-         <i class="fas fa-user-cog"></i>
-       <% end %>
-     <% end %></td>
      <td>
+       <%= @user.name %>
+
+       <% if current_user %>
+         &nbsp; <%= link_to edit_user_path ,class: "btn btn-info" do %>
+         <i class="fas fa-user-cog"></i>
+         <% end %>
+       <% end %>
+
+     </td>
+    <td><%= render "public/relationships/follow", user: @user %></Td>
 
 
-<%= render "public/relationships/follow", user: @user %>
+
+     <td>
+       <%= link_to user_bookmarkslist_path(@user), class: "btn btn-light" do %>
+         <i class="fas fa-bookmark"></i>ブックマークリスト
+       <% end %>
+     </td>
 
 
 
 
 
-       </td>
    </tr>
    <tr>
-     <td>ブックマーク</td>
+     <td><%= @user.infomation %></td>
      <td>
-       <%= link_to "フォローリスト", user_followslist_path(@user) %> /
-       <%= link_to "フォロワーリスト", user_followerslist_path(@user) %>
+       <%= link_to user_followslist_path(@user) ,class: "btn btn-primary" do %>
+       <i class="fas fa-arrow-right"></i><i class="fas fa-user-friends"></i>フォローリスト
+       <% end %>
+      </td>
+      <td>
+       <%= link_to user_followerslist_path(@user),class: "btn btn-success" do %>
+       <i class="fas fa-arrow-left"></i><i class="fas fa-user-friends"></i>フォロワーリスト
+       <% end %>
      </td>
     </tr>
    </table>

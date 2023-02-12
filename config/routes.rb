@@ -45,6 +45,11 @@ devise_for :users,skip: [:passwords], controllers: {
       resource :relationships, only: [:create,:destroy]
       get "followings" => "relationships#followings", as: "followslist"
       get "followers" => "relationships#followers", as: "followerslist"
+      
+      
+            
+          #ブックマーク一覧
+      get "bookmarks" => "bookmarks#bookmarks", as: "bookmarkslist"
 
     end
 
@@ -54,8 +59,8 @@ devise_for :users,skip: [:passwords], controllers: {
       #感想と評価
       resources :reviews, only: [:index,:create,:destroy]
 
-      #bookmark(お気に入り)
-      resource :bookmark, only: [:index,:create,:destroy]
+      #ユーザーのbookmark(お気に入り)
+      resource :bookmarks, only: [:create,:destroy]
 
     end
 
