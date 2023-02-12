@@ -16,24 +16,20 @@
      </td>
     <td><%= render "public/relationships/follow", user: @user %></Td>
 
-
-
      <td>
-       <%= link_to user_bookmarkslist_path(@user), class: "btn btn-light" do %>
-         <i class="fas fa-bookmark"></i>ブックマークリスト
+
+      <%= link_to user_followslist_path(@user) ,class: "btn btn-primary" do %>
+       <i class="fas fa-arrow-right"></i><i class="fas fa-user-friends"></i>フォローリスト
        <% end %>
      </td>
-
-
-
 
 
    </tr>
    <tr>
      <td><%= @user.infomation %></td>
      <td>
-       <%= link_to user_followslist_path(@user) ,class: "btn btn-primary" do %>
-       <i class="fas fa-arrow-right"></i><i class="fas fa-user-friends"></i>フォローリスト
+       <%= link_to user_bookmarkslist_path(@user), class: "btn btn-light" do %>
+         <i class="fas fa-bookmark"></i>ブックマークリスト
        <% end %>
       </td>
       <td>
@@ -60,7 +56,7 @@
             <th>作品名</th>
             <th>ログライン</th>
             <th>ジャンル</th>
-            <th>評価</th>
+            <th>感想数</th>
           </tr>
         </thead>
         <tbody>
@@ -74,7 +70,7 @@
                 <%= genre.genre %>
               <% end %>
             </td>
-            <td class="col-lg-3">評価(感想数)</td>
+            <td class="col-lg-3"><%= novel.reviews.count %></td>
           </tr>
         <% end %>
 
