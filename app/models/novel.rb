@@ -10,7 +10,7 @@ class Novel < ApplicationRecord
   has_many :genres, through: :tags, dependent: :destroy
   accepts_nested_attributes_for :tags
 
-  has_many :bookmark, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
 
   validates :title, {
@@ -37,7 +37,7 @@ class Novel < ApplicationRecord
   #ユーザーIDが存在？するかどうかを調べる。存在していれば、trueを返す
  def bookmarked_by?(user)
     # favorites.exists?(user_id: user.id)
-    bookmark.where(user_id: user).exists?
+    bookmarks.where(user_id: user).exists?
  end
 
 #非公開(下書き保存)にするか、公開(投稿)するか
