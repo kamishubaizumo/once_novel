@@ -41,7 +41,7 @@ class Novel < ApplicationRecord
  end
 
 #非公開(下書き保存)にするか、公開(投稿)するか
-   enum novel_status: {公開: 0, 非公開: 1, 下書き保存: 2}
+   enum novel_status: {novel_public: 0, novel_private: 1}
 
 
 end

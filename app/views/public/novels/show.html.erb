@@ -12,6 +12,9 @@
 
         <div class="col">
           <!--ブックマーク-->
+          ==
+             <h2>  <%= @novel.novel_status %></h2>
+
           <%= render "public/bookmarks/bookmark", novel: @novel %>
         </div>
 
@@ -21,6 +24,7 @@
           <% end %>
         </p>
       <%= @novel.logline %></p>
+
 
     </div>
 </div>
