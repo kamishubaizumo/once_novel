@@ -45,9 +45,9 @@ devise_for :users,skip: [:passwords], controllers: {
       resource :relationships, only: [:create,:destroy]
       get "followings" => "relationships#followings", as: "followslist"
       get "followers" => "relationships#followers", as: "followerslist"
-      
-      
-            
+
+
+
           #ブックマーク一覧
       get "bookmarks" => "bookmarks#bookmarks", as: "bookmarkslist"
 
@@ -65,5 +65,8 @@ devise_for :users,skip: [:passwords], controllers: {
     end
 
   end
+
+  #検索
+  get "search" => "searches#search"
 end
 
