@@ -14,11 +14,9 @@
         <%= f.submit "投稿", class: "btn btn-success mt-3" %>
       <% end %>
 
-      <!--評価記入-->
-         <div id="star"></div>
-         <!--星を出す-->
 
-      <div id="star justify-content-left">
+
+      <div id="star" class="justify-content-left">
         <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
           <%= f.label :star_rate,'評価する', class:'col-md-3 col-form-label' %>
           <%= f.hidden_field :star_rate, id: :review %>
@@ -30,7 +28,7 @@
 
 
         <!--コメント一覧-->
-        <h3 class="text-center mt-5">感想一覧</h3>
+        <h3 class="text-center mt-3">感想一覧</h3>
         <div class="col my-4">
         <% @novel.reviews.each do |review| %>
 

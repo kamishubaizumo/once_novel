@@ -10,7 +10,7 @@
 <div class="container text-center mt-5">
 
     <p class="pt-3 text-right">
-      作者：
+      作家名：
       <%= link_to user_path(@novel.user.id) do %>
         <%= @novel.user.name %></p>
       <% end %>
@@ -19,20 +19,23 @@
     <div class="col justify-content-center">
       <h2><%= @novel.title %></h2><br>
 
-        <div class="col">
+        <div class="col text-right">
+
+             <!--<h2>  <%#= @novel.novel_status %></h2>-->
+
           <!--ブックマーク-->
-
-             <h2>  <%= @novel.novel_status %></h2>
-
           <%= render "public/bookmarks/bookmark", novel: @novel %>
-        </div>
 
-        <p class="text-right">ジャンル:
+
+        <p>ジャンル:
           <% @novel.genres.each do |genre| %>
             <%= genre.genre %>
           <% end %>
         </p>
-      <%= @novel.logline %></p>
+                <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
+      </div>
+
+      <p><%= @novel.logline %></p>
 
 
     </div>
@@ -60,6 +63,7 @@
       <div class="col">
 
         <%= link_to "感想を書く",novel_reviews_path(novel_id: @novel.id), class: "btn btn-secondary" %>
+
 
         <% if @novel.user == current_user %>
           <%= link_to "編集する", edit_novel_path ,class: "btn btn-primary" %>
