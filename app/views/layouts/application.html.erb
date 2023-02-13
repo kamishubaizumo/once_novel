@@ -15,7 +15,7 @@
       <nav class="navbar navbar-light bg-light w-100 ">
 
         <%= link_to root_path do %>
-          <img src="assets/logo.png" width="170">
+          <%= image_tag "logo.png" ,width: "170px"%>
         <% end %>
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
@@ -113,10 +113,11 @@
     <%= notice %>
     <%= yield %>
 
+      <div class="text-right pr-5 py-3"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
     <footer>
 
-      <div class="text-center border-top mt-3">
-        <small>2023 &copy; kamishubaizumo</small>
+      <div class="text-center border-top pt-4">
+        <small class="footer-text">2023 &copy; once-novel @kamishubaizumo</small>
       </div>
 
     </footer>

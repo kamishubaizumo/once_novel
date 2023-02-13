@@ -24,3 +24,20 @@
 
 
 }
+
+
+.about-text {
+  font-style: italic;
+}
+
+footer {
+  height: 100px;
+  background: #87a962;
+
+}
+
+
+.footer-text {
+
+  color: #fff;
+}
