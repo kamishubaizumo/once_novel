@@ -32,11 +32,10 @@
             <%= genre.genre %>
           <% end %>
         </p>
-                <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
+          <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
       </div>
 
       <p><%= @novel.logline %></p>
-
 
     </div>
 </div>
@@ -76,7 +75,7 @@
     </div>
 </div>
 
-<div class="text-right pr-5 pb-5"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
+
 
 
 <%# end %>
