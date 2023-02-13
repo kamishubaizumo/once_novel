@@ -44,4 +44,19 @@ class Novel < ApplicationRecord
    enum novel_status: {novel_public: 0, novel_private: 1}
 
 
+
+# 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @novel = Novel.where("title LIKE?","#{word}")
+    elsif search == "partial_match"
+      @novel = Novel.where("title LIKE?","%#{word}%")
+    else
+      @novel = Novel.all
+    end
+  end
+
+
+
+
 end
