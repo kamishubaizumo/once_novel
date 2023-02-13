@@ -2,12 +2,13 @@ class Public::NovelsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
+    #novel_statusが公開(0)のものを一覧表示する。
 
     #kaminariを使ったページネーション
      if params[:genre_id].blank?
       # genre_idが空かどうかをblank?で確かめる。blank? = 空のオブジェクトを判定
 
-      @novels = Novel.page(params[:page]).per(20)
+      @novels = Novel.where(novel_status: "novel_public").page(params[:page]).per(20)
       @genres = Genre.all
       @index = "Novel"
 
@@ -15,7 +16,9 @@ class Public::NovelsController < ApplicationController
 
      #Genre.allではなく、Genre.params[:genre_id]で値をひとつ取ってくる。
         @genre = Genre.find(params[:genre_id])
-        @novels = @genre.novels.page(params[:page]).per(20)
+
+        #ジャンルからノベルら取ってきて、公開しているものを表示する。
+        @novels = @genre.novels.where(novel_status: "novel_public").page(params[:page]).per(20)
         @novels_all = @genre.novels.count
         @genres = Genre.all
         @index = @genre.genre
@@ -25,12 +28,13 @@ class Public::NovelsController < ApplicationController
 
   def show
     @novel = Novel.find(params[:id])
-
   end
 
   def new
     #新規投稿
     @write = Novel.new
+
+
 
     #非公開か公開を選ぶ
   end
@@ -40,7 +44,7 @@ class Public::NovelsController < ApplicationController
     @write.user_id = current_user.id
 
     if @write.save
-      #中間テーブルに保存。novelとgenre_idの紐づけ。難しい。
+      #中間テーブルに保存。novelとgenre_idの紐づけ。何をやってるのか理解はできていない。
       @tag = Tag.new(novel_id: @write.id,genre_id: params[:novel][:genre_id])
       #メンターさんに教わった。正直、まだよくわからない。
 
@@ -60,18 +64,29 @@ class Public::NovelsController < ApplicationController
     #非公開、公開を変更する
 
 
+    #"0","1"の文字列でエラーが起きた。もし、ステータスがnovel_privateなら1
+    if @novel.novel_status == "novel_private"
+
+      @selected = 1
+    else
+      @selected = 0
+    end
+
+
+
   end
 
 
   def update
     @novel = Novel.find(params[:id])
 
-    if @novel.update(write_novel_params)
+    updateParams = write_novel_params
+    updateParams[:novel_status] = updateParams[:novel_status].to_i
+    if @novel.update(updateParams)
       #novel.tags.first ノベルの最初に選んだタグ(中間テーブル)がnil(無い)場合
       if @novel.tags.first == nil
         #タグを新たにノベルIDと紐づける。　ノベルidとジャンルIDを紐づける。ここはまだ理解できていない。
         @tag = Tag.new(novel_id: @novel.id, genre_id: params[:novel][:genre_id])
-
         #タグをセーブ
         @tag.save()
       else
@@ -80,6 +95,11 @@ class Public::NovelsController < ApplicationController
       end
       flash[:notice] = "更新に成功しました"
       redirect_to novel_path(@novel.id)
+
+      # 公開非公開を更新
+
+
+
     end
 
   end

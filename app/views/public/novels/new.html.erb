@@ -31,9 +31,8 @@
 
 
           <!--公開・非公開を選ぶ-->
-      　<%= f.label :novel_status, "公開範囲を選択" %><br>
-      　<%= f.select :novel_status,[["公開","公開"],["非公開","非公開"],["下書き保存","下書き保存"]]  %>
-
+      　        <%= f.label :novel_status, "公開範囲を選択" %>
+      　<%= f.select :novel_status,{"公開": "novel_public", "非公開": "novel_private"}  %>
 
 
         <%= f.submit "投稿する" %>

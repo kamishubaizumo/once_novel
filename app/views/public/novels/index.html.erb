@@ -10,14 +10,11 @@
         <% end %>
     </div>
 
-
-
-
 <div class="col">
 
 <h2><%= @index %>一覧</h2>
 
-    <table class="table">
+    <table class="table text-left">
       <thead>
         <tr>
           <th>作品名</th>
@@ -31,13 +28,13 @@
 
       <tbody>
         <tr>
-          <td class="col-lg-4">
+          <td class="col-lg-2">
             <%= link_to novel_path(novel.id) do %>
               <%= novel.title %>
             <% end %>
           </td>
-          <td class="col-lg-4"><%= novel.logline %></td>
-          <td class="col-lg-2-3">
+          <td class="col-lg-5"><%= novel.logline %></td>
+          <td class="col-lg-2">
             <% novel.genres.each do |genre| %>
               <%= genre.genre %>
             <% end %>

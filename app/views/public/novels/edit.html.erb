@@ -39,7 +39,9 @@
         <div class="col">
 
         <%= f.label :novel_status, "公開範囲を選択" %>
-      　<%= f.select :novel_status,[["公開","公開"],["非公開","非公開"]]  %>
+        <%= @novel.novel_status %>
+      　<%= f.select :novel_status, {"公開": 0, "非公開": 1}, selected: @selected  %>
+
         </div>
       </div>
     <% end %>
