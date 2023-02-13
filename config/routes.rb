@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'bookmarks/index'
+  end
+  namespace :public do
     get 'relationships/followings'
     get 'relationships/followers'
   end
@@ -25,33 +28,45 @@ devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
   scope module: :public do
     root to: 'homes#top'
     get "about" => "homes#about"
 
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy] do
+
       #退会確認画面
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
       #論理削除のルーティング
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
-      resources :relationships, only: [:create,:destroy]
+
+      #resourcesではなく、resource。フォロー・フォロワー
+      resource :relationships, only: [:create,:destroy]
       get "followings" => "relationships#followings", as: "followslist"
       get "followers" => "relationships#followers", as: "followerslist"
+
+
+
+          #ブックマーク一覧
+      get "bookmarks" => "bookmarks#bookmarks", as: "bookmarkslist"
+
     end
-    
-    
-    resources :novels, only: [:index,:create,:show,:edit,:update,:destroy]
-    get "novel/write" => "novels#new"
-    post "novel/write" => "novels#new"
 
-    #Review(comments)のルート
 
-    #relation
+    #作品
+    resources :novels, only: [:index,:new,:create,:show,:edit,:update,:destroy] do
+      #感想と評価
+      resources :reviews, only: [:index,:create,:destroy]
 
-    #bookmark
+      #ユーザーのbookmark(お気に入り)
+      resource :bookmarks, only: [:create,:destroy]
 
+    end
 
   end
+
+  #検索
+  get "search" => "searches#search"
 end
 

@@ -4,9 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #ユーザーが管理者側のページに遷移しないようにするには？？
+  #applicationコントローラに、adminのページにユーザーがいけないようにする記述をかいてある。
+
   has_many :novels, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+
+  validates :name, length: {in: 2..10}
+  validates :infomation, length: { maximum: 100}
 
 
 
@@ -43,6 +49,27 @@ end
 
 
   enum is_deleted: {退会済み: true, 有効: false}
+
+
+#退会したユーザーを検索結果に表示させないようにするには？？
+
+
+# 検索方法分岐
+  def self.looks(search, word)
+    
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+
+
+
+
+
 
 
 end

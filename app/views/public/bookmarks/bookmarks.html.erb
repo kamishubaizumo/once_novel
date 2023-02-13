@@ -1,5 +1,5 @@
 <div class="mt-5 text-center">
-  <h2>フォローリスト</h2>
+  <h2>ブックマークリスト</h2>
 </div>
 
 <div class="container">
@@ -9,24 +9,28 @@
         <thead>
           <tr>
             <th>ユーザーネーム</th>
-            <th>作品数</th>
-            <th> </th>
+            <th>作品名</th>
+            <th>ジャンル</th>
           </tr>
         </thead>
-          <% if @users.exists? %>
-            <% @users.each do |user| %>
+          <% if @novels.exists? %>
+            <% @novels.each do |bookmark| %>
           <tbody>
             <tr>
               <td>
-                <%= link_to user_path(user.id) do %>
-                  <%= user.name %>
+                <%= link_to user_path(bookmark.user.id) do %>
+                  <%= bookmark.user.name %>
                 <% end %>
               </td>
               <td>
-                <%= user.novels.count %>
+                <%= link_to novel_path(bookmark.novel.id) do %>
+                  <%= bookmark.novel.title %>
+                <% end %>
               </td>
               <td>
-                <%= render "public/relationships/follow", user: user  %>
+                <% bookmark.novel.genres.each do |genre| %>
+                  <%= genre.genre %>
+                <% end %>
               </td>
             </tr>
           </tbody>
@@ -34,7 +38,7 @@
             <% end %>
           <% else %>
             <div class="mt-5 text-center">
-              <h3>ユーザーはいません</h3>
+              <h3>ブックマークはしていません</h3>
             </div>
           <% end %>
       </table>

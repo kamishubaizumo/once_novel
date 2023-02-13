@@ -1,52 +1,82 @@
+<%# if user.is_deleted == true %>
+<!--投稿したアカウントが退会したため、投稿は見れません-->
+
+<%# elsif novel.novel_status == "novel_private" %>
+
+<!--この投稿は非公開です-->
+
+<%# else %>
+
 <div class="container text-center mt-5">
 
-    <h3><%= @novel.title %></h2>
+    <p class="pt-3 text-right">
+      作家名：
+      <%= link_to user_path(@novel.user.id) do %>
+        <%= @novel.user.name %></p>
+      <% end %>
+      <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
+
+    <div class="col justify-content-center">
+      <h2><%= @novel.title %></h2><br>
+
+        <div class="col text-right">
+
+             <!--<h2>  <%#= @novel.novel_status %></h2>-->
+
+          <!--ブックマーク-->
+          <%= render "public/bookmarks/bookmark", novel: @novel %>
 
 
+        <p>ジャンル:
+          <% @novel.genres.each do |genre| %>
+            <%= genre.genre %>
+          <% end %>
+        </p>
+                <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
+      </div>
+
+      <p><%= @novel.logline %></p>
 
 
-       <p class="pt-3 text-right">作者：<%= @novel.user.name %></p>
-
-<div class="col justify-content-center">
-  <%= @novel.logline %></p>
- <div class="col">
-
-<p class="text-right">ジャンル:
-<% @novel.genres.each do |genre|%>
-<%= genre.genre %>
-<% end %></p>
-<p class="text-right">ブックマーク</p>
-</div>
-</div>
-
-
-
-
-
-<div class="container">
-<div class="row justify-content-center">
-
-
-<div class="col-lg-9 my-3 py-4 border">
-
-<%= @novel.foreword %>
-
-</div>
-
-<div class="col-lg-9 my-3 border">
-<%= h(@novel.body).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>
+    </div>
 </div>
 
 
-<div class="col-lg-9 my-3 py-4 border">
 
-<p><%= @novel.afterword %></p>
-</div>
+<div class="container text-center">
+  <div class="row justify-content-center text-left">
 
-</div>
-<% if current_user %>
-  <%= link_to "編集する", edit_novel_path ,class: "btn btn-primary" %>
-<% end %>
+    <div class="col-lg-9 my-3 py-4 border">
+      <%= @novel.foreword %>
+    </div>
+
+    <div class="col-lg-9 my-3 border text">
+      <%= h(@novel.body).gsub(/\r|\r\n/, "<br>").html_safe %></p>
+    </div>
+
+      <div class="col-lg-9 my-3 py-4 border">
+        <p><%= @novel.afterword %></p>
+      </div>
+  </div>
+
+    <div class="row">
+      <div class="col">
+
+        <%= link_to "感想を書く",novel_reviews_path(novel_id: @novel.id), class: "btn btn-secondary" %>
+
+
+        <% if @novel.user == current_user %>
+          <%= link_to "編集する", edit_novel_path ,class: "btn btn-primary" %>
+      </div>
+
+      <div class="col">
+          <%= link_to "削除する", novel_path(@novel.id), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
 </div>
 
 <div class="text-right pr-5 pb-5"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
+
+
+<%# end %>

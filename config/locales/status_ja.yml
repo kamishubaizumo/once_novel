@@ -1,0 +1,6 @@
+ja:
+  enums:
+    novel:
+      novel_status:
+        novel_public: '公開'
+        novel_private: '非公開'

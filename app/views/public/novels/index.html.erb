@@ -1,15 +1,7 @@
 
-<p class="alert alert-danger">管理者側で追加したジャンルを、novelに紐づけて保存する仕様にしている。
-しかし現状、paramsには、id情報しかなく、文字列の値が出てこない。これはどうすれば解決するだろうか。
-<br>
-現在、ジャンルがnovelを持っている状態になっている。
-一覧画面で、ジャンルを表示するやり方が、わからない。
-</p>
-
-
 <div class="container-flid mt-5">
   <div class="row">
-    <div class="col-lg-3 text-center">
+    <div id="sidebar" class="col-lg-2 text-center">
 
       <h2>ジャンル一覧</h2>
         <% @genres.each do |genre| %>
@@ -18,18 +10,16 @@
         <% end %>
     </div>
 
-
-
-
 <div class="col">
 
 <h2><%= @index %>一覧</h2>
 
-    <table class="table">
+    <table class="table text-left">
       <thead>
         <tr>
           <th>作品名</th>
           <th>ログライン</th>
+          <th>ジャンル</th>
           <th>作家名</th>
         </tr>
       </thead>
@@ -38,13 +28,18 @@
 
       <tbody>
         <tr>
-          <td>
+          <td class="col-lg-2">
             <%= link_to novel_path(novel.id) do %>
               <%= novel.title %>
             <% end %>
           </td>
-          <td><%= novel.logline %></td>
-          <td>
+          <td class="col-lg-5"><%= novel.logline %></td>
+          <td class="col-lg-2">
+            <% novel.genres.each do |genre| %>
+              <%= genre.genre %>
+            <% end %>
+          </td>
+          <td class="col-lg-3">
             <%= link_to user_path(novel.user.id) do %>
               <%= novel.user.name %>
             <% end %>
@@ -57,4 +52,5 @@
 
     </div>
   </div>
+  <%= paginate @novels %>
 </div>
