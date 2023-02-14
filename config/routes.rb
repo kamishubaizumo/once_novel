@@ -29,16 +29,21 @@ devise_for :users,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+#gゲストログイン ルートエラーが起きたので、usersからpublicに書き換え。　userの外側のこの行に配置。
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
+
   scope module: :public do
     root to: 'homes#top'
     get "about" => "homes#about"
 
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
 
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy] do
 
-    
+
 
 
       #退会確認画面
