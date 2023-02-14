@@ -11,7 +11,7 @@
             </td>
 
           <td>
-             <% if current_user == @user %>
+             <% if current_user == @user && @user.name != "guestuser"%>
                &nbsp; <%= link_to edit_user_path ,class: "btn btn-info" do %>
                <i class="fas fa-user-cog"></i>ユーザー編集
                <% end %>
@@ -56,7 +56,7 @@
           <!--非公開一覧を表示-->
           <% if current_user == @user %>
             <!--enumで1 = "novel_public"-->
-            <%= link_to "非公開の作品を確認",user_path(novel_status: "novel_private") %>
+            | <%= link_to "非公開の作品を確認",user_path(novel_status: "novel_private") %>
           <% end %>
         </h3>
 

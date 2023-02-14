@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
 
-  # #ゲストログイン
+  # #ゲストログイン user.rb routes,rbに記述
   def guest_sign_in
     user = User.guest
     sign_in user

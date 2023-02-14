@@ -64,7 +64,7 @@ end
   end
 
 
-  #ゲストログイン機能
+  #ゲストログイン機能 routes.rbにルーティング設定 session_controller.rbに記述
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
