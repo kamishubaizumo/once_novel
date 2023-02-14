@@ -43,12 +43,9 @@ end
 
   #退会したら、そのアカウントではログインできなくなる。
   def active_for_authentication?
-    super && (is_deleted == "有効")
+    super && !is_deleted
   end
   # == false　が原因でログインを弾かれた。"有効"にして解消。
-
-
-  enum is_deleted: {退会済み: true, 有効: false}
 
 
 #退会したユーザーを検索結果に表示させないようにするには？？
@@ -56,7 +53,7 @@ end
 
 # 検索方法分岐
   def self.looks(search, word)
-    
+
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
     elsif search == "partial_match"
@@ -67,7 +64,13 @@ end
   end
 
 
-
+  #ゲストログイン機能
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 
 
 

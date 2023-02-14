@@ -2,7 +2,7 @@
   <%= image_tag "logo.png", width: "260px" %>
 </div>
 
-<div class="container text-center mt-5">
+<div class="container-fulid text-center mt-5">
   <p>短編小説向けの投稿サイトです。</p>
   <p>タイトルの『once: いつか、一度』通り、<br>
   <b>『一度、投稿したシナリオのアイディアが、いつか長編小説を執筆する時に役立てるかも』</b><br>
@@ -10,14 +10,17 @@
   をコンセプトに考えました。
   </p>
   <small>&#8251;架空のポートフォリオサイトです</pmall>
+</div>
 
-<div class="container mt-5">
+<div class="container-fulid mt-5">
   <div class="row d-flex d-wrap justify-content-around">
 
 
       <%= link_to novels_path do %>
         <div class="col top-contents">今すぐ読む</div>
       <% end %>
+
+
 
       <% if user_signed_in? %>
 
@@ -40,6 +43,10 @@
 
         <%= link_to new_user_session_path do %>
           <div class="col top-contents">ログインして<br>執筆する</div>
+        <% end %>
+
+        <%= link_to users_guest_sign_in_path, method: :post do %>
+          <div class="col top-contents">ゲストログイン（閲覧用）</div>
         <% end %>
 
       <% end %>

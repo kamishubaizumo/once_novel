@@ -7,25 +7,19 @@
   <div class="row justify-content-center">
     <div class="col-lg-6">
 
+    <% if user_signed_in? %>
       <!--感想記入-->
       <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
         <%= f.label :comment,"感想を書く" %><br>
         <%= f.text_area :comment, autofocus: true, size: "50x5", class: "form-control" %>
         <%= f.submit "投稿", class: "btn btn-success mt-3" %>
       <% end %>
-
-
-
-      <div id="star" class="justify-content-left">
-        <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
-          <%= f.label :star_rate,'評価する', class:'col-md-3 col-form-label' %>
-          <%= f.hidden_field :star_rate, id: :review %>
-        <% end %>
+    <% else %>
+      <div class="text-center my-3">
+        <%= link_to "ログイン", new_user_session_path %>
+        して感想を書く
       </div>
-
-
-
-
+    <% end %>
 
         <!--コメント一覧-->
         <h3 class="text-center mt-3">感想一覧</h3>
@@ -47,8 +41,6 @@
           </div>
         <% end %>
         </div>
-
-
     </div>
   </div>
 </div>

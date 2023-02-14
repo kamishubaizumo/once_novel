@@ -1,3 +1,7 @@
+
+<!--ログアウト状態だとエラーになるので、ログインしていない場合は表示しないことでエラー回避-->
+<% if user_signed_in? %>
+
       <p class="text-right">
         <% if novel.bookmarked_by?(current_user) %>
 
@@ -13,3 +17,5 @@
 
         <% end %>
       </p>
+
+<% end %>
