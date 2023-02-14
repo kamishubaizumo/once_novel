@@ -40,8 +40,11 @@ class Novel < ApplicationRecord
     bookmarks.where(user_id: user).exists?
  end
 
-#非公開(下書き保存)にするか、公開(投稿)するか
+# 非公開にするか、公開(投稿)するか
    enum novel_status: {novel_public: 0, novel_private: 1}
+
+
+
 
 
 

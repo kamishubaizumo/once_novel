@@ -9,13 +9,16 @@
   border: hidden;
 }
 
+.header-color {
+  background: #D9EDAC;
+}
 
 
 .top-contents {
   width: 220px;
   height: 220px;
   padding-top: 80px;
-  background: #9439c0;
+  background: #87a962;
   text-align: center;
   font-size: 23px;
   color: #fff;
@@ -31,13 +34,17 @@
 }
 
 footer {
-  height: 100px;
-  background: #87a962;
+  height: 160px;
+  background: #78CB7F;
 
 }
 
 
 .footer-text {
 
+  color: #fff;
+}
+
+.footer-text a{
   color: #fff;
 }

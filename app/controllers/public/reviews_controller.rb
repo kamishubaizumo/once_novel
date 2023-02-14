@@ -15,8 +15,7 @@ class Public::ReviewsController < ApplicationController
 
     @review = current_user.reviews.new(review_params)
     @review.novel = Novel.find(params[:novel_id])
-    @review.save
-    redirect_to novel_reviews_path
+
 
   end
 

@@ -12,7 +12,7 @@
 
   <body>
     <header class="d-flex">
-      <nav class="navbar navbar-light bg-light w-100 ">
+      <nav class="navbar navbar-light w-100 header-color">
 
         <%= link_to root_path do %>
           <%= image_tag "logo.png" ,width: "170px"%>
@@ -114,12 +114,20 @@
     <%= yield %>
 
       <div class="text-right pr-5 py-3"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
-    <footer>
+   
+   <footer class="footer-text">
+
 
       <div class="text-center border-top pt-4">
-        <small class="footer-text">2023 &copy; once-novel @kamishubaizumo</small>
+        <p>
+          <%= link_to "HOME", root_path %>&nbsp;/&nbsp;<%= link_to "ABOUT",about_path %>
+        </p>
       </div>
-
+      <div class="footer-text text-center">
+        <small>2023 &copy; once-novel @kamishubaizumo<br>
+        <p class="py-3">架空のポートフォリオサイトです</p></small>
+      </div>
+      
     </footer>
   </body>
 </html>

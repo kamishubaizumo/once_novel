@@ -2,18 +2,21 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
 
-
   def show
     @user = User.find(params[:id])
     @novels = @user.novels
 
 
     #ノベルが公開なら公開一覧に表示
+
     if @novels.where(novel_status: "novel_public")
+
+
 
     else
       #ノベルが非公開なら、非公開一覧に表示
       @novels.where(novel_status: "novel_private")
+
 
     end
 

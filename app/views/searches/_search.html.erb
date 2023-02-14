@@ -2,8 +2,8 @@
   <%= form_with url: search_path, local: true, method: :get do |f| %>
     <div class="d-flex flex-column">
       <div class="col mb-2">
-        <span><%= f.radio_button(:range, "User")%><small>ユーザー名</small></span>
-        <span><%= f.radio_button(:range, "Novel")%><small>作品名</small></span>
+        <span><%= f.radio_button(:range, "User") %><small>ユーザー名</small></span>
+        <span><%= f.radio_button(:range, "Novel") %><small>作品名</small></span>
         <%= f.select :search, options_for_select([["部分一致","partial_match"],["完全一致","perfect_match"]]) %>
       </div>
 

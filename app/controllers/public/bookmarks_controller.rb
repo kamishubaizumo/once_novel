@@ -20,9 +20,16 @@ class Public::BookmarksController < ApplicationController
 
 
   #ルートがユーザー側にあるブックマーク一覧
+
   def bookmarks
-    #@novel = Novel.find(params[:novel_id])
-    user = current_user
-    @novels = user.bookmarks
+
+    #user = current_user
+    #@novels = user.novels
+
+
+    #他の人のブックマークを見たいからuser情報を取ってくる。
+    user = User.find(params[:user_id])
+    @bookmarks = user.bookmarks
+
   end
 end

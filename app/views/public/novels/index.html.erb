@@ -26,26 +26,33 @@
 
       <% @novels.each do |novel| %>
 
-      <tbody>
-        <tr>
-          <td class="col-lg-2">
-            <%= link_to novel_path(novel.id) do %>
-              <%= novel.title %>
-            <% end %>
-          </td>
-          <td class="col-lg-5"><%= novel.logline %></td>
-          <td class="col-lg-2">
-            <% novel.genres.each do |genre| %>
-              <%= genre.genre %>
-            <% end %>
-          </td>
-          <td class="col-lg-3">
-            <%= link_to user_path(novel.user.id) do %>
-              <%= novel.user.name %>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
+<!--退会したユーザーの作品を自動的に非公開にする-->
+       <% if novel.user.is_deleted == true%>
+          <% else %>
+         
+              <tbody>
+                <tr>
+                  <td class="col-lg-2">
+                    <%= link_to novel_path(novel.id) do %>
+                      <%= novel.title %><br>
+                      ステータス<%= novel.novel_status %>
+                    <% end %>
+                  </td>
+                  <td class="col-lg-5"><%= novel.logline %></td>
+                  <td class="col-lg-2">
+                    <% novel.genres.each do |genre| %>
+                      <%= genre.genre %>
+                    <% end %>
+                  </td>
+                  <td class="col-lg-3">
+                    <%= link_to user_path(novel.user.id) do %>
+                      <%= novel.user.name %>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+          <% end %>
+
       <% end %>
 
     </table>

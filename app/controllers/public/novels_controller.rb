@@ -4,6 +4,7 @@ class Public::NovelsController < ApplicationController
   def index
     #novel_statusが公開(0)のものを一覧表示する。
 
+    #@user = Novel.user.is_deleted == true #非表示にする
     #kaminariを使ったページネーション
      if params[:genre_id].blank?
       # genre_idが空かどうかをblank?で確かめる。blank? = 空のオブジェクトを判定
@@ -28,15 +29,14 @@ class Public::NovelsController < ApplicationController
 
   def show
     @novel = Novel.find(params[:id])
+
+
   end
 
   def new
     #新規投稿
     @write = Novel.new
 
-
-
-    #非公開か公開を選ぶ
   end
 
   def create
@@ -55,16 +55,14 @@ class Public::NovelsController < ApplicationController
     end
 
 
-    #非公開、公開で登録。
+
   end
 
   def edit
     @novel = Novel.find(params[:id])
-    #ジャンルを変更する
+
     #非公開、公開を変更する
-
-
-    #"0","1"の文字列でエラーが起きた。もし、ステータスがnovel_privateなら1
+    #"0","1"の文字列でエラーが起きた。解決方法は、もし、ステータスがnovel_privateなら1
     if @novel.novel_status == "novel_private"
 
       @selected = 1
@@ -95,10 +93,6 @@ class Public::NovelsController < ApplicationController
       end
       flash[:notice] = "更新に成功しました"
       redirect_to novel_path(@novel.id)
-
-      # 公開非公開を更新
-
-
 
     end
 

@@ -11,10 +11,12 @@
             <th>ユーザーネーム</th>
             <th>作品名</th>
             <th>ジャンル</th>
+            <th> </th>
           </tr>
         </thead>
-          <% if @novels.exists? %>
-            <% @novels.each do |bookmark| %>
+        <!--@novelsから、@bookmarksに書き換え-->
+          <% if @bookmarks.exists? %>
+            <% @bookmarks.each do |bookmark| %>
           <tbody>
             <tr>
               <td>
@@ -31,6 +33,9 @@
                 <% bookmark.novel.genres.each do |genre| %>
                   <%= genre.genre %>
                 <% end %>
+              </td>
+              <td>
+                <%= render "public/bookmarks/bookmark", novel: bookmark.novel %>
               </td>
             </tr>
           </tbody>
