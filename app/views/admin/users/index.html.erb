@@ -17,26 +17,27 @@
   </tr>
 
 
-  <% @users.each do |users| %>
+  <% @users.each do |user| %>
   <tbody>
     <tr>
       <td>
-        <%= link_to admin_user_path(users.id) do %>
-          <%= users.name %>
+        <%= link_to admin_user_path(user.id) do %>
+          <%= user.name %>
         <% end %>
       </td>
       <td>
-        <%= users.infomation %>
+        <%= user.infomation %>
       </td>
       <td>
-        <%= users %>
+        <%= user.novels.count %>
       </td>
       <td>
-        <%= users.is_deleted %>
+        <%= user.is_deleted %>
       </td>
     </tr>
   </tbody>
   <% end %>
 </table>
+ <%= paginate @users %>
 </div>
 </div>

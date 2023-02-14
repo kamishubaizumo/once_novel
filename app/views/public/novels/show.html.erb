@@ -1,83 +1,20 @@
 <% if @novel.user.is_deleted %>
-投稿したアカウントが退会したため、投稿は見れません
 
-<%# elsif @novel.novel_status == "novel_private" %>
+<div class="text-center my-5">
+  <b>投稿したアカウントが退会したため、投稿は見れません</b>
+</div>
+
+
+<!--ノベルステータスが1<novel_private>の時 かつ　投稿主と投稿した人が違う<!=>時は非公開　-->
+<% elsif @novel.novel_status == "novel_private" && current_user != @novel.user %>
+
+<div class="text-center my-5">
+  <b>この投稿は非公開です</b>
+</div>
 
 <% else %>
-  <% if @novel.novel_status == "novel_private" %>
-      この投稿は非公開です
 
-      非公開かつ、自分の投稿だった場合は見れるようにしたい
-    <% elsif current_user.@novel.novel_status == "novel_private" %>
+<!--ノベル本編-->
+<%= render "public/novels/novel", novel: @novel %>
 
-          <div class="container text-center mt-5">
-
-              <p class="pt-3 text-right">
-                作家名：
-                <%= link_to user_path(@novel.user.id) do %>
-                  <%= @novel.user.name %></p>
-                <% end %>
-                <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
-
-              <div class="col justify-content-center">
-                <h2><%= @novel.title %></h2><br>
-                <%= @novel.novel_status %>
-
-                  <div class="col text-right">
-
-                    <!--ブックマーク-->
-                    <%= render "public/bookmarks/bookmark", novel: @novel %>
-
-
-                  <p>ジャンル:
-                    <% @novel.genres.each do |genre| %>
-                      <%= genre.genre %>
-                    <% end %>
-                  </p>
-                    <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
-                </div>
-
-                <p><%= @novel.logline %></p>
-
-              </div>
-          </div>
-
-
-
-          <div class="container text-center">
-            <div class="row justify-content-center text-left">
-
-              <div class="col-lg-9 my-3 py-4 border">
-                <%= @novel.foreword %>
-              </div>
-
-              <div class="col-lg-9 my-3 border text">
-                <%= h(@novel.body).gsub(/\r|\r\n/, "<br>").html_safe %></p>
-              </div>
-
-                <div class="col-lg-9 my-3 py-4 border">
-                  <p><%= @novel.afterword %></p>
-                </div>
-            </div>
-
-              <div class="row">
-                <div class="col">
-
-                  <%= link_to "感想を書く",novel_reviews_path(novel_id: @novel.id), class: "btn btn-secondary" %>
-
-
-                  <% if @novel.user == current_user %>
-                    <%= link_to "編集する", edit_novel_path ,class: "btn btn-primary" %>
-                </div>
-
-                <div class="col">
-                    <%= link_to "削除する", novel_path(@novel.id), method: :delete, class: "btn btn-danger" %>
-                  <% end %>
-                </div>
-              </div>
-          </div>
-
-
-
-<% end %>
 <% end %>

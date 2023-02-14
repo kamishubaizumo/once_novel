@@ -7,21 +7,15 @@ class Public::UsersController < ApplicationController
     @novels = @user.novels
 
 
-    #ノベルが公開なら公開一覧に表示
-
-    if @novels.where(novel_status: "novel_public")
-
-
-
+    #パラメータのノベルステータスに、値があるかどうか
+    if params[:novel_status].present?
+      @novels = @novels.where(novel_status: params[:novel_status])
     else
-      #ノベルが非公開なら、非公開一覧に表示
-      @novels.where(novel_status: "novel_private")
-
-
+      @novels = @novels.where(novel_status: "novel_public")
     end
 
-
   end
+
 
   def edit
     @user = User.find(params[:id])

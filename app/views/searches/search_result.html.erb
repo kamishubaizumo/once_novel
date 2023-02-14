@@ -2,9 +2,9 @@
   <h2>検索結果</h2>
 </div>
 
-<div class="container">
+<div class="container-fulid">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
 
         <table class="table table-hover table-inverse">
           <!--検索対象モデルがUserの時 -->
@@ -36,14 +36,20 @@
             <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
             <thead>
               <tr>
-                <th>作品名</th>
-                <th>ログライン</th>
-                <th>ジャンル</th>
+                <th class="col-lg-2">作家名</th>
+                <th class="col-lg-4">作品名</th>
+                <th class="col-lg-4">ログライン</th>
+                <th class="col-lg-3">ジャンル</th>
               </tr>
             </thead>
             <tbody>
               <% @novels.each do |novel| %>
                 <tr>
+                  <td>
+                    <%= link_to user_path(novel.user.id) do %>
+                      <%= novel.user.name %>
+                    <% end %>
+                  </td>
                   <td>
                     <%= link_to novel_path(novel.id) do %>
                       <%= novel.title %>

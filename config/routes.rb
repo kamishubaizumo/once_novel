@@ -33,8 +33,13 @@ devise_for :users,skip: [:passwords], controllers: {
     root to: 'homes#top'
     get "about" => "homes#about"
 
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy] do
+
+    
+
 
       #退会確認画面
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"

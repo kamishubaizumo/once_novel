@@ -27,9 +27,9 @@
       <% @novels.each do |novel| %>
 
 <!--退会したユーザーの作品を自動的に非公開にする-->
-       <% if novel.user.is_deleted == true%>
+       <% if novel.user.is_deleted == true %>
           <% else %>
-         
+
               <tbody>
                 <tr>
                   <td class="col-lg-2">

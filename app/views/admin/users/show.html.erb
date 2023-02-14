@@ -11,7 +11,7 @@
 
       <table class="table">
         <tr>
-          <th>ユーザーネーム</th><td><%= @user.name %></td>
+          <th class="col-lg-3">ユーザーネーム</th><td class="col-lg-5"><%= @user.name %></td>
         </tr>
         <tr>
           <th>自己紹介文</th><td><%= @user.infomation %></td>
@@ -20,7 +20,7 @@
           <th>メールアドレス</th><td><%= @user.email %></td>
         </tr>
         <tr>
-          <th>会員ステータス</th><td><%= @user.is_deleted %>/////強制退会させる処理がわからない。</td>
+          <th>会員ステータス(true:退会済み)</th><td><%= @user.is_deleted %></td>
         </tr>
       </table>
 
@@ -32,13 +32,51 @@
 </div>
 
 <div class="mt-5 text-center">
-    <h3>作品一覧・全<>件</h3>
+    <h3>作品一覧</h3>
 </div>
 
-<div class="container">
+<div class="container-fulid">
   <div class="row justify-content-center">
-    <div class="col-lg-5">
-      部分テンプレート！！
+    <div class="col-lg-9">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-lg-3">作品名</th>
+            <th class="col-lg-4">ログライン</th>
+            <th class="col-lg-2">ジャンル</th>
+            <th class="col-lg-2">コメント数</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <% @user.novels.each do |novel| %>
+          <tr>
+            <td>
+              <%= link_to novel_path(novel.id) do %>
+                <%= novel.title %>
+              <% end %>
+            </td>
+            <td><%= novel.logline %></td>
+            <td>
+              <% novel.genres.each do |genre| %>
+                <%= genre.genre %>
+              <% end %>
+            </td>
+            <td><%= novel.reviews.count %></td>
+          </tr>
+        </tbody>
+
+
+
+        <% end %>
+
+
+
+      </table>
+
+
     </div>
   </div>
 </div>

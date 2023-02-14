@@ -13,10 +13,11 @@
   <body>
     <header class="d-flex">
       <nav class="navbar navbar-light w-100 header-color">
+      
+          <%= link_to root_path do %>
+            <%= image_tag "logo.png" ,width: "170px"%>
+          <% end %>
 
-        <%= link_to root_path do %>
-          <%= image_tag "logo.png" ,width: "170px"%>
-        <% end %>
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
             <li>
@@ -84,7 +85,6 @@
                 <i class="fas fa-user-plus"></i>新規登録
               <% end %>
 
-
             </li>
             <li>
               <%= link_to new_user_session_path do %>
@@ -114,7 +114,7 @@
     <%= yield %>
 
       <div class="text-right pr-5 py-3"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
-   
+
    <footer class="footer-text">
 
 
@@ -127,7 +127,7 @@
         <small>2023 &copy; once-novel @kamishubaizumo<br>
         <p class="py-3">架空のポートフォリオサイトです</p></small>
       </div>
-      
+
     </footer>
   </body>
 </html>
