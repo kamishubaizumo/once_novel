@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
         if @user.email == 'guest@example.com'
           flash[:notice] = "ゲストユーザーは退会できません"
           redirect_to admin_root_path
-          #削除しようとしたら、トップ画面へリダイレクト
+          #削除しようとしたら、adminのルートへリダイレクト
         else
         #!をつけて、true/falseを反転させて、有効、退会を切り替えることができる。
         @user.update(is_deleted: !@user.is_deleted)
