@@ -44,20 +44,3 @@
     </div>
   </div>
 </div>
-
-
-
-      <script>
-        // scriptファイルをどのidの部分に配置するかを指定
-        let elem = document.querySelector('#star');
-        let opt = {
-          size     : 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          scoreName: 'post[rate]',
-          half: true,
-          //星画像の指定などのオプションをここに記述,
-         };
-        raty(elem,opt);
-      </script>

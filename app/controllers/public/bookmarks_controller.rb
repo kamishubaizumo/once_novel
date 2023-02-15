@@ -6,6 +6,8 @@ class Public::BookmarksController < ApplicationController
     novel = Novel.find(params[:novel_id])
     bookmark = current_user.bookmarks.new(novel_id: novel.id)
     bookmark.save
+
+    #非同期通信するのでredirectは消す
     redirect_to novel_path(novel)
   end
 
@@ -15,6 +17,8 @@ class Public::BookmarksController < ApplicationController
     novel = Novel.find(params[:novel_id])
     bookmark = current_user.bookmarks.find_by(novel_id: novel.id)
     bookmark.destroy
+
+    #非同期通信するのでrediretは消す
     redirect_to novel_path(novel)
   end
 
