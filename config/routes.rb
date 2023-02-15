@@ -16,6 +16,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     root to: "users#index"
     resources :users, only:[:index,:show,:edit,:update]
     resources :genres, only:[:index,:create,:edit,:update]
+
+    #ユーザーを退会させる :idでユーザーのIDをが取得できる。
+    
+    patch "withdrawal/:id" => "users#withdrawal", as: "withdrawal"
 end
 
 
