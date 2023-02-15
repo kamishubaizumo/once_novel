@@ -13,13 +13,13 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     @review.novel_id= Novel.find(params[:novel_id]).id
-    
+
     if  @review.save
       flash[:notice] = "投稿に成功しました"
     redirect_to novel_reviews_path
     else
-     flash[:notice] = "投稿できませんでした"
-     render novel_review_path(@review.id)
+     flash[:notice] = "投稿に失敗しました。2文字以上で投稿してください"
+    redirect_to novel_reviews_path
     end
   end
 

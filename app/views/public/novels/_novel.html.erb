@@ -10,16 +10,10 @@
               <div class="col justify-content-center">
                 <h2><%= @novel.title %></h2>
 
-                <!--↓後で消す-->
-                <br>
-                <%= @novel.novel_status %>
-                <!--ここまで-->
-
                   <div class="col text-right">
 
-                    <!--ブックマーク-->
-                 
-                    <%= render "public/bookmarks/bookmark", novel: @novel %>
+                    <!--ブックマークボタン-->
+                  <%= render "public/bookmarks/bookmark", novel: @novel %>
                   
 
                   <p>ジャンル:

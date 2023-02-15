@@ -39,9 +39,9 @@ class Admin::UsersController < ApplicationController
                @user.reviews.destroy_all
                flash[:notice] = "退会処理を実行いたしました"
             else
-               flash[:notice] = "有効にします"
+               flash[:notice] = "有効にしました"
             end
-          redirect_to admin_root_path
+          redirect_to admin_user_path(@user.id)
         end
     end
 

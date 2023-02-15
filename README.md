@@ -40,6 +40,7 @@
 - <a href="https://app.diagrams.net/?libs=general;er#G1kJCeQWAqRUwTMdhXWep3YkodhCEXhbSp">ER図</a>
 - <a href="https://app.diagrams.net/?libs=general;er#G1kJCeQWAqRUwTMdhXWep3YkodhCEXhbSp">必要ビュー</a>
 - <a href="https://docs.google.com/spreadsheets/d/1V4gtMzF0lgv0I9P0Jh5aeIj6qb_Efs8jLZ06t3KX2OI/edit#gid=1411163324">各設計書</a>
+- <a href="https://docs.google.com/spreadsheets/d/1a5pcw6i8_9ZsrdQQYlYQNK22eQk0LVCiqGn0Bjhq6nc/edit#gid=332850601">テスト項目</a>
 
 ## 開発環境
 - OS：Linux(CentOS)

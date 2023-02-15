@@ -1,7 +1,11 @@
 <div class="mt-5 text-center">
 
   <small><%= link_to "ユーザー一覧", admin_root_path %> &nbsp; | &nbsp;<bold>ユーザー詳細</bold></small>
-  <h2 class="mt-3"><%= @user.name %>・ステータス情報</h2>
+  <h2 class="mt-3">
+    <%= link_to user_path(@user.id) do %>
+      <%= @user.name %>
+    <% end %>
+  ・ステータス情報</h2>
 </div>
 
 
@@ -55,6 +59,7 @@
             <th class="col-lg-4">ログライン</th>
             <th class="col-lg-2">ジャンル</th>
             <th class="col-lg-2">コメント数</th>
+            <th class="col-lg-2">公開範囲</th>
           </tr>
         </thead>
 
@@ -74,6 +79,12 @@
                 <% end %>
               </td>
               <td><%= novel.reviews.count %></td>
+              <td>
+                <% if novel.novel_status == "novel_public" %>公開
+                <% elsif novel.novel_status == "novel_private" %>非公開
+                <% else %>下書き
+                <% end %>
+              </td>
             </tr>
         <% end %>
         </tbody>

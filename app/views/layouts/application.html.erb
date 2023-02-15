@@ -116,11 +116,11 @@
 
     <%= yield %>
 
-      <div class="text-right pr-5 py-3"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>
+  <!--トップボタン-->
+    <%= render "layouts/to_top"%>
+
 
    <footer class="footer-text">
-
-
       <div class="text-center border-top pt-4">
         <p>
           <%= link_to "HOME", root_path %>&nbsp;/&nbsp;<%= link_to "ABOUT",about_path %>

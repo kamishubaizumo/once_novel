@@ -120,7 +120,7 @@ class Public::NovelsController < ApplicationController
       @novel = Novel.find(params[:id])
       user_id = @novel.user.id
       login_user_id = current_user.id
-      if(user_id != login_user_id)
+      if user_id != login_user_id
         redirect_to novels_path
       end
     end
