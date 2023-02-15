@@ -9,7 +9,7 @@
             </td>
 
           <td>
-             <% if current_user == user  && user.name != "guestuser" %>
+             <% if current_user == user  && user.email != 'guest@example.com' %>
                &nbsp; <%= link_to edit_user_path(user.id) ,class: "btn btn-info" do %>
                <i class="fas fa-user-cog"></i>ユーザー編集
                <% end %>
