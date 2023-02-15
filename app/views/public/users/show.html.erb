@@ -2,49 +2,11 @@
   <% if @user.is_deleted %>
   　<p>このユーザーは退会済みです</p>
   <% else %>
-    <div class="row justify-content-center">
-      <table class="table col-lg-8">
-        <tr>
-        　<td>
-            <small>ユーザーネーム</small><br>
-              <%= @user.name %>
-            </td>
+    
 
-          <td>
-             <% if current_user == @user && @user.name != "guestuser"%>
-               &nbsp; <%= link_to edit_user_path ,class: "btn btn-info" do %>
-               <i class="fas fa-user-cog"></i>ユーザー編集
-               <% end %>
-             <% else %>
-              <!--フォローボタン-->
-              <%= render "public/relationships/follow", user: @user %>
-            <% end %>
-          </Td>
+      <%= render "public/users/infomation", user: @user %>
 
-          <td>
-            <%= link_to user_followslist_path(@user) ,class: "btn btn-primary" do %>
-             <i class="fas fa-arrow-right"></i><i class="fas fa-user-friends"></i>フォローリスト
-            <% end %>
-          </td>
-        </tr>
-
-       <tr>
-         <td>
-           <small>自己紹介</small><br><%= @user.infomation %>
-         </td>
-         <td>
-           <%= link_to user_bookmarkslist_path(@user), class: "btn btn-light" do %>
-             <i class="fas fa-bookmark"></i>ブックマークリスト
-           <% end %>
-         </td>
-         <td>
-           <%= link_to user_followerslist_path(@user),class: "btn btn-success" do %>
-             <i class="fas fa-arrow-left"></i><i class="fas fa-user-friends"></i>フォロワーリスト
-           <% end %>
-         </td>
-       </tr>
-      </table>
-    </div>
+    
 
     <div class="container-fulid mt-4">
       <div class="row justify-content-center">
@@ -75,6 +37,7 @@
             <tr>
               <td class="col-lg-4"><%= link_to "#{novel.title}",novel_path(novel.id) %>
                 <br>
+                <!--あとで消す-->
                 <%= novel.novel_status %>
               </td>
 

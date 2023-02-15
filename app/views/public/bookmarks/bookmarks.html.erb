@@ -1,52 +1,64 @@
-<div class="mt-5 text-center">
-  <h2>ブックマークリスト</h2>
-</div>
 
-<div class="container">
+
+
+<div class="container mt-5">
+
+  <%= render "public/users/infomation", user: @user %>
+
   <div class="row justify-content-center">
-    <div class="col-lg-9">
-      <table class="table mt-5">
-        <thead>
-          <tr>
-            <th>ユーザーネーム</th>
-            <th>作品名</th>
-            <th>ジャンル</th>
-            <th> </th>
-          </tr>
-        </thead>
-        <!--@novelsから、@bookmarksに書き換え-->
-          <% if @bookmarks.exists? %>
-            <% @bookmarks.each do |bookmark| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to user_path(bookmark.user.id) do %>
-                  <%= bookmark.user.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to novel_path(bookmark.novel.id) do %>
-                  <%= bookmark.novel.title %>
-                <% end %>
-              </td>
-              <td>
-                <% bookmark.novel.genres.each do |genre| %>
-                  <%= genre.genre %>
-                <% end %>
-              </td>
-              <td>
-                <%= render "public/bookmarks/bookmark", novel: bookmark.novel %>
-              </td>
-            </tr>
-          </tbody>
 
+    <div class="col-lg-9">
+
+      <div class="mt-5 text-center">
+        <h2>ブックマークリスト</h2>
+      </div>
+
+      <% if @bookmarks.exists? %>
+
+            <table class="table mt-5">
+              <thead>
+                <tr>
+                  <th>ユーザーネーム</th>
+                  <th>作品名</th>
+                  <th>ジャンル</th>
+                  <th> </th>
+                </tr>
+              </thead>
+
+        <!--@novelsから、@bookmarksに書き換え-->
+            <% @bookmarks.each do |bookmark| %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= link_to user_path(bookmark.user.id) do %>
+                        <%= bookmark.user.name %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to novel_path(bookmark.novel.id) do %>
+                        <%= bookmark.novel.title %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <% bookmark.novel.genres.each do |genre| %>
+                        <%= genre.genre %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= render "public/bookmarks/bookmark", novel: bookmark.novel %>
+                    </td>
+                  </tr>
+                </tbody>
             <% end %>
-          <% else %>
+          </table>
+
+        <% else %>
+
             <div class="mt-5 text-center">
               <h3>ブックマークはしていません</h3>
             </div>
-          <% end %>
-      </table>
+
+        <% end %>
     </div>
   </div>
 </div>

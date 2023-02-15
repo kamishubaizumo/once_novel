@@ -33,7 +33,7 @@ devise_for :users,skip: [:passwords], controllers: {
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
-  
+
 
   scope module: :public do
     root to: 'homes#top'
@@ -43,13 +43,10 @@ devise_for :users,skip: [:passwords], controllers: {
 
     resources :users, only: [:index,:show,:create,:edit,:update,:destroy] do
 
-
-
-
       #退会確認画面
-    get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+    get "unsubscribe" => "users#unsubscribe", as: "unsubscribe"
       #論理削除のルーティング
-    patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
+    patch "withdrawal" => "users#withdrawal", as: "withdrawal"
 
       #resourcesではなく、resource。フォロー・フォロワー
       resource :relationships, only: [:create,:destroy]
