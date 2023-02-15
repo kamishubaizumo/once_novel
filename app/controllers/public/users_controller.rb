@@ -39,6 +39,7 @@ class Public::UsersController < ApplicationController
 
   #退会処理　ゲストユーザー用に書き換え。ちなみに、User.find(params[:id]) から current_userにすることで、エラー解消。
   def withdrawal
+
     @user = current_user
 
     if @user.email == 'guest@example.com'
@@ -48,10 +49,13 @@ class Public::UsersController < ApplicationController
       #削除しようとしたら、トップ画面へリダイレクト
     else
 
-    @user.update(is_deleted: true)
+    @user.update(is_deleted: true )
 
-    #ユーザーが退会したとき、全ての投稿<update_all>を非公開にする
+    #ユーザーが退会したとき、update_allで、全ての投稿を非公開にする。
     @user.novels.update_all(novel_status: "novel_private")
+
+    #感想を全て物理削除する
+    @user.reviews.destroy_all
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path

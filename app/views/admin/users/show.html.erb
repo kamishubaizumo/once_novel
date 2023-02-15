@@ -20,7 +20,16 @@
           <th>メールアドレス</th><td><%= @user.email %></td>
         </tr>
         <tr>
-          <th>会員ステータス(true:退会済み)</th><td><%= @user.is_deleted %></td>
+          <th>会員ステータス</th>
+          <td>
+            <% if @user.is_deleted %>
+              退会済み &nbsp;
+              <%= link_to "有効にする", admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-success" %>
+            <% else %>
+              有効 &nbsp;
+            <%= link_to "退会させる", admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-danger" %>
+            <% end %>
+          </td>
         </tr>
       </table>
 
@@ -52,28 +61,22 @@
 
         <tbody>
           <% @user.novels.each do |novel| %>
-          <tr>
-            <td>
-              <%= link_to novel_path(novel.id) do %>
-                <%= novel.title %>
-              <% end %>
-            </td>
-            <td><%= novel.logline %></td>
-            <td>
-              <% novel.genres.each do |genre| %>
-                <%= genre.genre %>
-              <% end %>
-            </td>
-            <td><%= novel.reviews.count %></td>
-          </tr>
-        </tbody>
-
-
-
+            <tr>
+              <td>
+                <%= link_to novel_path(novel.id) do %>
+                  <%= novel.title %>
+                <% end %>
+              </td>
+              <td><%= novel.logline %></td>
+              <td>
+                <% novel.genres.each do |genre| %>
+                  <%= genre.genre %>
+                <% end %>
+              </td>
+              <td><%= novel.reviews.count %></td>
+            </tr>
         <% end %>
-
-
-
+        </tbody>
       </table>
 
 

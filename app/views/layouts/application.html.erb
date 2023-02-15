@@ -13,7 +13,7 @@
   <body>
     <header class="d-flex">
       <nav class="navbar navbar-light w-100 header-color">
-      
+
           <%= link_to root_path do %>
             <%= image_tag "logo.png" ,width: "170px"%>
           <% end %>
@@ -109,8 +109,11 @@
 
         </nav>
       </header>
+    <!--アラートメッセージ-->
+    <div class="text-center alert alert-danger">
+      <%= notice %>
+    </div>
 
-    <%= notice %>
     <%= yield %>
 
       <div class="text-right pr-5 py-3"><a href="#"><i class="fas fa-caret-square-up"></i>TOPへ戻る</a></div>

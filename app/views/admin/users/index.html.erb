@@ -32,7 +32,8 @@
         <%= user.novels.count %>
       </td>
       <td>
-        <%= user.is_deleted %>
+        <!--退会済みかどうかをif文でtrue,elseで返せる ==を省略できる-->
+        <% if user.is_deleted %>退会済み<% else %>有効<% end %>
       </td>
     </tr>
   </tbody>
