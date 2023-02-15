@@ -11,14 +11,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-
-    if @review = current_user.reviews.new(review_params)
-        @review.novel = Novel.find(params[:novel_id])
+    @review = current_user.reviews.new(review_params)
+    @review.novel_id= Novel.find(params[:novel_id]).id
+    if  @review.save
+      flash[:notice] = "投稿に成功しました"
+    redirect_to novel_reviews_path
     else
      flash[:notice] = "投稿できませんでした"
-     render novel_review_path
+     render novel_review_path(@review.id)
     end
-
   end
 
   def destroy

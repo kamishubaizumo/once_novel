@@ -49,6 +49,9 @@ class Public::UsersController < ApplicationController
     else
 
     @user.update(is_deleted: true)
+
+    #ユーザーが退会したとき、全ての投稿<update_all>を非公開にする
+    @user.novels.update_all(novel_status: "novel_private")
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
