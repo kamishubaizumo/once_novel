@@ -23,6 +23,7 @@ class Public::BookmarksController < ApplicationController
 
   def bookmarks
 
+  #自分にだけ表示させるけど、エラーが出るので書き換え
     #user = current_user
     #@novels = user.novels
 
@@ -30,6 +31,9 @@ class Public::BookmarksController < ApplicationController
     #他の人のブックマークを見たいからuser情報を取ってくる。
     user = User.find(params[:user_id])
     @bookmarks = user.bookmarks
+
+    #部分テンプレートに必要
+    @user = User.find(params[:user_id])
 
   end
 end

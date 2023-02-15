@@ -16,7 +16,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @users.each do |user| %>
+              <% @active_users.each do |user| %>
                 <tr>
                   <td>
                     <%= link_to user_path(user.id) do %>
@@ -33,7 +33,7 @@
 
           <% else %>
 
-            <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+            <!--検索対象モデルがUserではない時(= 検索対象モデルがNovelの時) -->
             <thead>
               <tr>
                 <th class="col-lg-2">作家名</th>
@@ -43,7 +43,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @novels.each do |novel| %>
+              <% @novels_public.each do |novel| %>
                 <tr>
                   <td>
                     <%= link_to user_path(novel.user.id) do %>

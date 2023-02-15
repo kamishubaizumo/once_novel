@@ -16,8 +16,10 @@ class Public::RelationshipsController < ApplicationController
   #フォローリスト
   def followings
     user = User.find(params[:user_id])
-
     @users = user.followings
+
+    #部分テンプレートに必要
+    @user = User.find(params[:user_id])
 
   end
 
@@ -25,5 +27,8 @@ class Public::RelationshipsController < ApplicationController
   def followers
     user = User.find(params[:user_id])
     @users = user.followers
+
+    #部分テンプレートに必要
+    @user = User.find(params[:user_id])
   end
 end

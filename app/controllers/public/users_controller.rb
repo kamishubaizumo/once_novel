@@ -60,12 +60,12 @@ class Public::UsersController < ApplicationController
     def is_matching_login_user
       @user = User.find(params[:id])
       login_user_id = current_user.id
-      unless @user == login_user_id
+      unless @user == current_user
       redirect_to user_path(current_user)
       end
     end
 
-      #ゲストは名前を変えたらログインできなくなるので、編集させない
+      #ゲストは名前を変えたらログインできなくなるので、編集させない。退会URLを打ち込まれると退会できてしまう問題。
     def ensure_guest_user
       @user = User.find(params[:id])
       if @user.name == "guestuser"

@@ -8,8 +8,12 @@
                 <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
 
               <div class="col justify-content-center">
-                <h2><%= @novel.title %></h2><br>
+                <h2><%= @novel.title %></h2>
+
+                <!--↓後で消す-->
+                <br>
                 <%= @novel.novel_status %>
+                <!--ここまで-->
 
                   <div class="col text-right">
 
