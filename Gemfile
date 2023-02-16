@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.7', '>= 6.1.7.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 3.11'      #バージョン3.11に変更
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -59,3 +59,14 @@ gem "devise"
 gem "enum_help"
 gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
+
+#ローカル環境 デプロイ
+  gem 'dotenv-rails'
+    group :production do
+      gem 'mysql2'
+    end
+
+  #3行追加
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
