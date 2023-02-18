@@ -33,7 +33,7 @@
             <div class="row justify-content-center text-left">
 
               <div class="col-lg-9 my-3 py-4 border">
-                <%= @novel.foreword %>
+                <%= <%= h(@novel.foreword).gsub(/\r|\r\n/, "<br>").html_safe %></p> %>
               </div>
 
               <div class="col-lg-9 my-3 border text">
@@ -41,7 +41,7 @@
               </div>
 
                 <div class="col-lg-9 my-3 py-4 border">
-                  <p><%= @novel.afterword %></p>
+                  <p><%= h(@novel.afterword).gsub(/\r|\r\n/, "<br>").html_safe %></p>
                 </div>
             </div>
 
