@@ -14,7 +14,7 @@
 
                     <!--ブックマークボタン-->
                   <%= render "public/bookmarks/bookmark", novel: @novel %>
-                  
+
 
                   <p>ジャンル:
                     <% @novel.genres.each do |genre| %>
@@ -33,7 +33,7 @@
             <div class="row justify-content-center text-left">
 
               <div class="col-lg-9 my-3 py-4 border">
-                <%= <%= h(@novel.foreword).gsub(/\r|\r\n/, "<br>").html_safe %></p> %>
+                <%= h(@novel.foreword).gsub(/\r|\r\n/, "<br>").html_safe %></p>
               </div>
 
               <div class="col-lg-9 my-3 border text">
