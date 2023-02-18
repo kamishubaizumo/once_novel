@@ -12,10 +12,11 @@
     <%= form_with model: @genre, url:admin_genres_path, method: :post do |f| %>
       <%= f.text_field :genre ,class: "form-control"%>
       </div>
-
-      <%= f.submit "登録する",class: "btn btn-success" %>
-
+      <div class="col-lg-1">
+        <%= f.submit "登録する", class: "btn btn-success" %>
+      </div>
     <% end %>
+
 
 
     </div>

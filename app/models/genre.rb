@@ -7,4 +7,7 @@ class Genre < ApplicationRecord
   #genreテーブルから中間テーブルtagを介して、novelテーブルへの関連付け
   has_many :novels, through: :tags, dependent: :destroy
 
+
+  validates :genre, presence: true, uniqueness: true,length: {in: 1..20}
+
 end
