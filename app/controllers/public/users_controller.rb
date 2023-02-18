@@ -28,11 +28,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
+      #binding.pry
+
       redirect_to user_path(@user.id)
       flash[:notice] = "プロフィールを更新しました"
     else
+      flash[:notice] = "プロフィールの更新に失敗しました"
       render :edit
     end
+
+
 
   end
 
@@ -48,13 +53,13 @@ class Public::UsersController < ApplicationController
         #削除しようとしたら、トップ画面へリダイレクト
     else
         @user.update(is_deleted: true )
-    
+
         #ユーザーが退会したとき、update_allで、全ての投稿を非公開にする。
         @user.novels.update_all(novel_status: "novel_private")
-    
+
         #感想を全て物理削除する
         @user.reviews.destroy_all
-    
+
         #フォローを解除させたいが、以下の記述では無理っぽい
       #  @user.relationships.followings.destroy_all
 
@@ -71,12 +76,12 @@ class Public::UsersController < ApplicationController
 
 
     private
-  
+
     def user_params
       # permitに,:email,:passwordは設定したらダメっぽい。更新するとログアウトする。
       params.require(:user).permit(:name,:infomation)
     end
-  
+
     # 他人のプロフィール編集をできないように、editページに行くと、遷移させる。
       def is_matching_login_user
         @user = User.find(params[:id])
@@ -85,7 +90,7 @@ class Public::UsersController < ApplicationController
         redirect_to user_path(@user.id)
         end
       end
-  
+
         #ゲストはメアドを変えたらログインできなくなるので、編集させない。退会URLを打ち込まれると退会できてしまう問題。
       def ensure_guest_user
         @user = User.find(params[:id])
