@@ -14,6 +14,7 @@
         <% if @novel.tags.first == nil %>
           <%= f.collection_select :genre_id,Genre.all, :id, :genre %>
         <% else %>
+        <!--collection_select　登録しているデータを取得。selectedで、現在設定しているジャンルを取得-->
           <%= f.collection_select :genre_id,Genre.all, :id, :genre, selected: @novel.tags.first.genre_id %>
         <% end %>
       </div>
@@ -31,19 +32,18 @@
         <%= f.text_area :afterword, autofocus: true, size: "100x5", id: "inputAfterword", class: "form-control"  %>
 
 
-      <div class="row text-center mt-3 d-flex">
-        <div class="col">
-        <%= f.submit "更新", class: "btn btn-success" %>
+      <div class="row text-center mt-3 d-flex justify-content-center">
+        <div class="col-lg-5">
+          <%= f.label :novel_status, "公開範囲を選択" %>
+          <!--selectedで現在のステータスを取得している。-->
+        　<%= f.select :novel_status, {"公開": 0, "非公開": 1}, selected: @selected  %>
         </div>
 
-        <div class="col">
-
-        <%= f.label :novel_status, "公開範囲を選択" %>
-        <%= @novel.novel_status %>
-      　<%= f.select :novel_status, {"公開": 0, "非公開": 1}, selected: @selected  %>
-
+        <div class="col-lg-2">
+          <%= f.submit "更新", class: "btn btn-success" %>
         </div>
       </div>
     <% end %>
+
   </div>
 </div>

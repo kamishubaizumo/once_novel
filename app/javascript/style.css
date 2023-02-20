@@ -4,6 +4,8 @@
 }
 
 
+
+
 /*主にテーブルのボーダが要らない時*/
 .border-none {
   border: hidden;
@@ -31,6 +33,11 @@
 
 .about-text {
   font-style: italic;
+}
+
+
+.back-white {
+  background: #fff;
 }
 
 
