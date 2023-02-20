@@ -1,1 +1,3 @@
-$('#bookmark_button_<%= @bookmarks.novel.id %>').html("<%= j(render "public/bookmarks/bookmark", novel: @bookamrks.novel) %>");
+$('#bookmark_btn_<%= @novel.id %>').html("<%= j(render "public/bookmarks/bookmark", novel: @novel) %>");
+
+<!--コントローラの方に、インスタンス変数　@novelを定義する-->

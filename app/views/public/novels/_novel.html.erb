@@ -13,8 +13,9 @@
                   <div class="col text-right">
 
                     <!--ブックマークボタン-->
-                  <%= render "public/bookmarks/bookmark", novel: @novel %>
-
+                  <div id="bookmark_btn_<%= @novel.id %>">
+                    <%= render "public/bookmarks/bookmark", novel: @novel %>
+                  </div>
 
                   <p>ジャンル:
                     <% @novel.genres.each do |genre| %>

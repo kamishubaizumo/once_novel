@@ -1,0 +1,20 @@
+<div class="container-fulid">
+  <div class="mt-3">
+        <%= h(review.comment).gsub(/\n|\r|\r\n/, "<br>").html_safe %>
+  </div>
+<div class="row border-bottom border-primary">
+  <div class="col mb-3">
+      <%= link_to user_path(review.user) do %>
+          <%= review.user.name %>
+      <% end %>
+  </div>
+
+  <div class="col text-right">
+      <% if review.user == current_user %>
+          <%= link_to "削除", novel_review_path(review.novel,review),
+                method: :delete,
+                  data: { confirm: "感想を削除します" }, class: "btn btn-danger" %>
+      <% end %>
+  </div>
+</div>
+</div>

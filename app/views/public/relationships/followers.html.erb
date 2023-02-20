@@ -28,7 +28,7 @@
               <td>
                 <%= user.novels.count %>
               </td>
-              <td>
+              <td id="ajax_follow_<%= user.id %>">
                 <%= render "public/relationships/follow", user: user  %>
               </td>
             </tr>

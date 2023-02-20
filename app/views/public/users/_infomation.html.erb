@@ -15,6 +15,7 @@
                <% end %>
              <% else %>
               <!--フォローボタン-->
+              <div id="ajax_follow_<%= user.id %>">
               <%= render "public/relationships/follow", user: user %>
             <% end %>
           </Td>

@@ -3,21 +3,23 @@ class Public::BookmarksController < ApplicationController
 
 
   def create
-    novel = Novel.find(params[:novel_id])
-    bookmark = current_user.bookmarks.new(novel_id: novel.id)
+    @novel = Novel.find(params[:novel_id])
+    bookmark = current_user.bookmarks.new(novel_id: @novel.id)
     bookmark.save
 
+
+    # 非同期通信なのでコメントアウト。
     #request.referetはその場にリダイレクトする、
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
   def destroy
-    novel = Novel.find(params[:novel_id])
-    bookmark = current_user.bookmarks.find_by(novel_id: novel.id)
+    @novel = Novel.find(params[:novel_id])
+    bookmark = current_user.bookmarks.find_by(novel_id: @novel.id)
     bookmark.destroy
 
-    #非同期通信実装する予定
-    redirect_to request.referer
+    #非同期通信なのでコメントアウト。
+   # redirect_to request.referer
   end
 
 

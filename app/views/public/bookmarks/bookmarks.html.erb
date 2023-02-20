@@ -44,7 +44,7 @@
                         <%= genre.genre %>
                       <% end %>
                     </td>
-                    <td>
+                    <td id="bookmark_btn_<%= bookmark.novel.id %>">
                       <%= render "public/bookmarks/bookmark", novel: bookmark.novel %>
                     </td>
                   </tr>

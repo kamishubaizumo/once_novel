@@ -5,13 +5,13 @@
       <p class="text-right">
         <% if novel.bookmarked_by?(current_user) %>
 
-            <%= link_to novel_bookmarks_path(novel), method: :delete do %>
+            <%= link_to novel_bookmarks_path(novel.id), method: :delete, remote: true do %>
               <i class="fas fa-bookmark"></i>ブックマークを外す
             <% end %>
 
         <% else %>
 
-            <%= link_to novel_bookmarks_path(novel), method: :post do %>
+            <%= link_to novel_bookmarks_path(novel.id), method: :post, remote: true do %>
               <i class="far fa-bookmark"></i>ブックマーク
             <% end %>
 

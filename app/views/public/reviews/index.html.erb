@@ -11,7 +11,7 @@
       <!--感想記入-->
       <%= form_with model: @review, url: novel_reviews_path, method: :post do |f| %>
         <%= f.label :comment,"感想を書く(2文字以上)" %><br>
-        <%= f.text_area :comment, autofocus: true, size: "50x5", class: "form-control" %>
+        <%= f.text_area :comment, autofocus: true, size: "50x5",id: "js_review", class: "form-control", placeholder: "感想を記入" %>
         <%= f.submit "投稿", class: "btn btn-success mt-3" %>
       <% end %>
     <% else %>
@@ -23,24 +23,23 @@
 
         <!--コメント一覧-->
         <h3 class="text-center mt-3">感想一覧</h3>
-        <div class="col my-4">
-        <% @novel.reviews.each do |review| %>
+        <div class="col my-4" id="new_review">
 
-          <div class="mt-3 border">
-          <%= h(review.comment).gsub(/\r|\r\n/, "<br>").html_safe %></div>
-          <div class="mt-2"><%= review.star_rate%></div>
+        <!--collectionの省略記法　小ワザ-->
+        <%= render  @novel.reviews %>
 
-          <div class="mb-3">
-            <%= link_to user_path(review.user) do %>
-              <%= review.user.name %></div>
-            <% end %>
-          <div class="text-right">
-            <% if review.user == current_user %>
-              <%= link_to "削除", novel_review_path(review.novel, review), method: :delete, class: "btn btn-danger" %>
-            <% end %>
-          </div>
-        <% end %>
+
         </div>
     </div>
   </div>
 </div>
+
+
+<!--コメントは非同期にすると、逆に使い勝手悪いように感じるので、せっかく実装したけど、今回は使わないでおく-->
+<!--通信を非同期化するために　form with local: false　　　remote: trueじゃない-->
+
+<!--コントローラに処理を渡す　→　jsで動かすので 　create.js.erb　を用意する。-->
+<!--create.js.erb、追加する　append--> <!-- html 置き換える-->
+
+<!--画面の内容を変えたい場所にidを付ける-->
+<!--今回は一覧を変えたいので、一覧にIDをつけた id="new_review"-->
