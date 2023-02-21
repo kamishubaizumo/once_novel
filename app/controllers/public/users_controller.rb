@@ -60,8 +60,7 @@ class Public::UsersController < ApplicationController
         #感想を全て物理削除する
         @user.reviews.destroy_all
 
-        #フォローを解除させたいが、以下の記述では無理っぽい
-      #  @user.relationships.followings.destroy_all
+
 
         reset_session
         flash[:notice] = "退会処理を実行いたしました"

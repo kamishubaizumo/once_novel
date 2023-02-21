@@ -19,7 +19,6 @@ class SearchesController < ApplicationController
       #@novels_public = @novels.reject { |novel| novel.novel_status == "novel_private" } && @active_users =  @users.select { |user| user.is_deleted == false}
        render "searches/search_result"
 
-       #退会者の投稿を自動的に非公開にするには・・・
 
 
     end
