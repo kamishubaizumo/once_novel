@@ -18,7 +18,7 @@
             <table class="table mt-5">
               <thead>
                 <tr>
-                  <th>ユーザーネーム</th>
+                  <th>作家名</th>
                   <th>作品名</th>
                   <th>ジャンル</th>
                   <th> </th>
@@ -31,7 +31,7 @@
                   <tr>
                     <td>
                       <%= link_to user_path(bookmark.user.id) do %>
-                        <%= bookmark.user.name %>
+                        <%= bookmark.novel.user.name %>
                       <% end %>
                     </td>
                     <td>
