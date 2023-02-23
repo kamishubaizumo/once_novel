@@ -30,6 +30,25 @@
 
 }
 
+/*novel showページ。非公開時点滅*/
+.blink {
+  animation: blinking 6s ease-in-out infinite alternate;
+  color: #444;
+
+  border-radius: 50px;
+
+}
+@keyframes blinking {
+	100% {
+	  opacity: 1;
+	  background: #78CB7F;
+	  color: #fff;
+	}
+	100% {
+	  opacity: 1;
+	}
+}
+
 
 .about-text {
   font-style: italic;

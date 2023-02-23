@@ -18,7 +18,7 @@ class Public::ReviewsController < ApplicationController
       flash[:notice] = "投稿に成功しました"
     redirect_to novel_reviews_path
     else
-     flash[:notice] = "投稿に失敗しました。2文字以上で投稿してください"
+     flash[:notice] = "投稿に失敗しました。2文字以内、同じ文章は投稿できません"
     redirect_to novel_reviews_path
     end
   end
