@@ -1,0 +1,12 @@
+<h2>ジャンル一覧</h2>
+  <div id="navbarToggleExternalContent" class="collapse">
+    <% @genres.each do |genre| %>
+      <li class="my-2 "><%= link_to genre.genre,novels_path(genre_id: genre.id) %></li>
+    <% end %>
+  </div>
+
+  <nav class="navbar navbar-dark bg-secondary col">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>

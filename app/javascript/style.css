@@ -34,10 +34,9 @@
 .blink {
   animation: blinking 4s ease-in infinite alternate;
   color: #444;
-
   border-radius: 50px;
-
 }
+
 @keyframes blinking {
 	100% {
 	  opacity: 1;
@@ -74,3 +73,6 @@ footer {
 .footer-text a{
   color: #fff;
 }
+
+
+
