@@ -1,4 +1,6 @@
 class Novel < ApplicationRecord
+  #PV数のgemを追加したので、追記。コントローラにも追記する
+  is_impressionable
 
   belongs_to :user
   has_many :reviews, dependent: :destroy
