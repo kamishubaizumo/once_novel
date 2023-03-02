@@ -1,7 +1,11 @@
 class Public::NovelsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
+  #PVの計測
+  impressionist :actions => [:show]
+
   def index
+
     #novel_statusが公開(0)のものを一覧表示する。
 
     #@user = Novel.user.is_deleted == true #非表示にする
@@ -29,6 +33,9 @@ class Public::NovelsController < ApplicationController
 
   def show
     @novel = Novel.find(params[:id])
+
+    #PV数は　セッションでカウントする
+    impressionist(@novel, nil, unique: [:session_hash.to_s])
 
 
   end

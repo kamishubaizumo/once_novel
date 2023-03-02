@@ -5,16 +5,18 @@
                   <% end %>
                 </div>
 
-              <p class="pt-3 text-right">
-                作家名：
-                <%= link_to user_path(@novel.user.id) do %>
-                  <%= @novel.user.name %></p>
-                <% end %>
-                <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
 
               <div class="col justify-content-center">
                 <h2><%= @novel.title %></h2>
                   <div class="col text-right">
+
+
+       <!--なぜか、idが10のshowに飛ぶ。user_pathに、(@novel.user.id)を書いたら正しくなった。-->
+                  <p>作者：
+                    <%= link_to user_path(@novel.user.id) do %>
+                      <%= @novel.user.name %>
+                    <% end %>
+                  </p>
 
                     <!--ブックマークボタン-->
                   <div id="bookmark_btn_<%= @novel.id %>">
@@ -26,7 +28,10 @@
                       <%= genre.genre %>
                     <% end %>
                   </p>
+                  <p>PV数: <%= @novel.impressionist_count(:filter=>:session_hash) %>　</p>
                     <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
+                    <p>作成日: <%= novel.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                    <p>更新日: <%= novel.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
                 </div>
 
                 <p><%= @novel.logline %></p>

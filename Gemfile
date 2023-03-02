@@ -60,6 +60,10 @@ gem "enum_help"
 gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 
+#PVカウント
+gem 'impressionist'
+
+
 #ローカル環境 デプロイ
   gem 'dotenv-rails'
     group :production do
