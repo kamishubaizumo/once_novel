@@ -20,11 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
-
-
 
 # 追記
 production:
@@ -37,5 +32,4 @@ production:
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-#.envファイルに記載したDB_DATABASEに対応している。  
-  
+#.envファイルに記載したDB_DATABASEに対応している。
