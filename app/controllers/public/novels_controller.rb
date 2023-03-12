@@ -17,7 +17,32 @@ class Public::NovelsController < ApplicationController
       @genres = Genre.all
       @index = "Novel"
 
-     else
+
+      #ソート機能
+      #params[:new]ってどこにnewがある？
+      if params[:sort_order].present?
+        #view側で決めた単語で、present? でsort_orderがあるかどうかの確認をしている。真偽値
+
+        case params[:sort_order]
+          when "new"
+            #latest　モデルで定義したscope
+            @novels = Novel.latest.where(novel_status: "novel_public").page(params[:page]).per(20)
+          when "old"
+            @novels = Novel.old.where(novel_status: "novel_public").page(params[:page]).per(20)
+          when "comment_count"
+            #kaminari 型が違うので、arrayから参照
+            @novels = Kaminari.paginate_array(Novel.where(novel_status: "novel_public")
+            .includes(:reviews).sort {|a,b| b.reviews.count <=> a.reviews.count}).page(params[:page]).per(20)
+            #sortで、rebiewのカウント、a.bの並び替え。
+
+
+          # when "pv_count"　キャッシュ数のpvの並び替え困難。
+           #  @novels = Kaminari.paginate_array(Novel.joins(:impressions).group("impressions.impressionable_id").order("count('DISTINCT impressions.session_hash')")).page(params[:page]).per(20)
+
+        end
+      end
+
+      else
 
      #Genre.allではなく、Genre.params[:genre_id]で値をひとつ取ってくる。
         @genre = Genre.find(params[:genre_id])
@@ -27,7 +52,9 @@ class Public::NovelsController < ApplicationController
         @novels_all = @genre.novels.count
         @genres = Genre.all
         @index = @genre.genre
-     end
+      end
+
+
   end
 
 
@@ -116,8 +143,8 @@ class Public::NovelsController < ApplicationController
   private
 
   def write_novel_params
-    params.require(:novel).permit(:title, :logline, :foreword, :body, :afterword, :novel_status, :tags,
-                                  tags_attributes: [:id, :genre_id])
+    params.require(:novel).permit(:title, :logline, :foreword, :body, :afterword, :novel_status,
+                                  :tags,tags_attributes: [:id, :genre_id])
   end
 
 
