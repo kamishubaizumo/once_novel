@@ -4,6 +4,8 @@ class SearchesController < ApplicationController
   def search
 
     @range = params[:range]
+
+    #ユーザー検索
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
 
@@ -12,11 +14,11 @@ class SearchesController < ApplicationController
        render "searches/search_result"
     else
 
+    #作品検索
 
       @novels = Novel.looks(params[:search], params[:word])
-      #@novels_public = @novels.reject { |novel| novel.user.is_deleted == true && novel.novel_status == "novels_private"}
+
       @novels_public = @novels.reject { |novel| novel.novel_status == "novel_private" }
-      #@novels_public = @novels.reject { |novel| novel.novel_status == "novel_private" } && @active_users =  @users.select { |user| user.is_deleted == false}
        render "searches/search_result"
 
 

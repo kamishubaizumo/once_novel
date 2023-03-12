@@ -8,6 +8,17 @@
     <div class="col">
 
       <h2 class="ml-5"><%= @index %>一覧</h2>
+
+
+    <!--ソート機能-->
+      <div class="text-right ">
+        <%= link_to "新着順",novels_path(sort_order: :new) %>
+        <%= link_to "古い順",novels_path(sort_order: :old) %>
+        <%#= link_to "pv数順",novels_path(sort_order: :pv_count) %>
+        <%= link_to "感想数順",novels_path(sort_order: :comment_count) %>
+      </div>
+
+
           <% @novels.each do |novel| %>
 
     <!--退会したユーザーの作品を自動的に非公開にする-->
@@ -39,7 +50,7 @@
                     </p>
                     <p>感想数: <%= novel.reviews.count %></p>
                     <p>PV数: <%= novel.impressionist_count(:filter=>:session_hash) %></p>
-                    
+                    <p>作成日: <%= novel.created_at.strftime("%Y-%m-%d %H:%M") %></p>
                   </div>
 
             </div>

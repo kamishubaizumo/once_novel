@@ -60,8 +60,6 @@ devise_for :users,skip: [:passwords], controllers: {
       get "followings" => "relationships#followings", as: "followslist"
       get "followers" => "relationships#followers", as: "followerslist"
 
-
-
           #ブックマーク一覧
       get "bookmarks" => "bookmarks#bookmarks", as: "bookmarkslist"
 
@@ -82,5 +80,10 @@ devise_for :users,skip: [:passwords], controllers: {
 
   #検索
   get "search" => "searches#search"
+
+
+
+
+
 end
 
