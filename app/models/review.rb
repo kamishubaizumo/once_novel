@@ -5,6 +5,6 @@ class Review < ApplicationRecord
 
 
 
-  validates :comment, uniqueness: true ,length: {minimum: 2}
+  validates :comment,length: {minimum: 2}
 
 end
