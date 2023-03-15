@@ -30,8 +30,8 @@
                   </p>
                   <p>PV数: <%= @novel.impressionist_count(:filter=>:session_hash) %>　</p>
                     <p><%= link_to "感想数：#{@novel.reviews.count}", novel_reviews_path(@novel.id) %></p>
-                    <p>作成日: <%= novel.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-                    <p>更新日: <%= novel.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
+                    <p>作成日: <%= novel.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+                    <p>更新日: <%= novel.updated_at.strftime("%Y/%m/%d %H:%M") %></p>
                 </div>
 
                 <p><%= @novel.logline %></p>

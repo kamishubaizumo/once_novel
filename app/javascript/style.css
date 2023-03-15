@@ -18,16 +18,14 @@
 
 .top-contents {
   width: 220px;
+  background: #87a962;
   height: 220px;
   padding-top: 80px;
-  background: #87a962;
   text-align: center;
   font-size: 23px;
   color: #fff;
-  margin-right: 20px;
+  margin: 10px 10px;
   border-radius: 25px;
-
-
 }
 
 /*novel showページ。非公開時点滅*/
@@ -76,3 +74,20 @@ footer {
 
 
 
+@media screen and (max-width: 480px) {
+  /* ここに480px以下の画面幅に対応するCSSを記述する */
+
+
+  .top-contents {
+    background: #87a962;
+    width: 150px;
+    height: 150px;
+    padding-top: 55px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin: 10px 10px;
+    border-radius: 25px;
+
+  }
+}

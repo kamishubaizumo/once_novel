@@ -11,11 +11,10 @@
 
 
     <!--ソート機能-->
-      <div class="text-right ">
-        <%= link_to "新着順",novels_path(sort_order: :new) %>
-        <%= link_to "古い順",novels_path(sort_order: :old) %>
-        <%#= link_to "pv数順",novels_path(sort_order: :pv_count) %>
-        <%= link_to "感想数順",novels_path(sort_order: :comment_count) %>
+      <div class="text-right">
+        <%= link_to "新着順",novels_path(sort_order: :new),class: "mx-1" %> |
+        <%= link_to "古い順",novels_path(sort_order: :old),class: "mx-1" %> |
+        <%= link_to "感想数順",novels_path(sort_order: :comment_count),class: "ml-1 mr-3" %>
       </div>
 
 
@@ -50,7 +49,7 @@
                     </p>
                     <p>感想数: <%= novel.reviews.count %></p>
                     <p>PV数: <%= novel.impressionist_count(:filter=>:session_hash) %></p>
-                    <p>作成日: <%= novel.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                    <p>作成日: <%= novel.created_at.strftime("%Y/%m/%d %H:%M") %></p>
                   </div>
 
             </div>

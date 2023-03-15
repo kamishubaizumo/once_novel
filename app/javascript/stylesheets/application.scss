@@ -18,7 +18,6 @@ body {
   /* ここに480px以下の画面幅に対応するCSSを記述する */
 
 
-
 /*ハンバーガーメニュー*/
 #hm-icon {
 	position: fixed;
@@ -35,7 +34,7 @@ body {
 .menu-trigger {
 	position: relative;
 	width: 50px;
-	height: 44px;
+	height: 25px;
 }
 .menu-trigger span {
 	position: absolute;
@@ -50,22 +49,22 @@ body {
 	top: 0;
 }
 .menu-trigger span:nth-child(2) {
-	top: 20px;
+	top: 11.5px;
 }
 .menu-trigger span:nth-child(3) {
 	bottom: 0;
 }
 .menu-trigger.active span:nth-child(1) {
-	-webkit-transform: translateY(20px) rotate(-45deg);
-	transform: translateY(20px) rotate(-45deg);
+	-webkit-transform: translateY(10px) rotate(-45deg);
+	transform: translateY(10px) rotate(-45deg);
 	background-color: #fff;
 }
 .menu-trigger.active span:nth-child(2){
 	opacity: 0;
 }
 .menu-trigger.active span:nth-child(3) {
-	-webkit-transform: translateY(-20px) rotate(45deg);
-	transform: translateY(-20px) rotate(45deg);
+	-webkit-transform: translateY(-11px) rotate(45deg);
+	transform: translateY(-11px) rotate(45deg);
 	background-color: #fff;
 }
 
@@ -91,5 +90,9 @@ body {
 	text-decoration: none;
 	font-weight: bold;
 }
+
+
+
+
 
 }

@@ -11,14 +11,15 @@
   </head>
 
   <body>
-    <header class="d-flex">
-      <nav class="navbar navbar-light w-100 header-color" id="sp-menu">
+    <header class="d-flex w-100 header-color">
         <li>
           <%= link_to root_path do %>
             <%= image_tag "logo.png" ,width: "170px"%>
           <% end %>
         </li>
 
+
+      <nav class="navbar navbar-light w-100" id="sp-menu">
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
             <li>
