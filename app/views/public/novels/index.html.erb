@@ -11,11 +11,21 @@
 
 
     <!--ソート機能-->
+    <!--present? genre_idがある場合-->
+     <% if params[:genre_id].present? %>
+      <div class="text-right">
+        <%= link_to "新着順",novels_path(sort_order: :new,genre_id: params[:genre_id]),class: "mx-1" %> |
+        <%= link_to "古い順",novels_path(sort_order: :old,genre_id: params[:genre_id]),class: "mx-1" %> |
+        <%= link_to "感想数順",novels_path(sort_order: :comment_count,genre_id: params[:genre_id]),class: "ml-1 mr-3" %>
+      </div>
+    <% else %>
+
       <div class="text-right">
         <%= link_to "新着順",novels_path(sort_order: :new),class: "mx-1" %> |
         <%= link_to "古い順",novels_path(sort_order: :old),class: "mx-1" %> |
         <%= link_to "感想数順",novels_path(sort_order: :comment_count),class: "ml-1 mr-3" %>
       </div>
+    <% end %>
 
 
           <% @novels.each do |novel| %>

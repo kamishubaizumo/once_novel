@@ -42,17 +42,44 @@ class Public::NovelsController < ApplicationController
         end
       end
 
-      else
+     else
 
      #Genre.allではなく、Genre.params[:genre_id]で値をひとつ取ってくる。
         @genre = Genre.find(params[:genre_id])
 
         #ジャンルからノベルら取ってきて、公開しているものを表示する。
-        @novels = @genre.novels.where(novel_status: "novel_public").page(params[:page]).per(20)
+        @novels = @genre.novels.where(novel_status: "novel_public")
         @novels_all = @genre.novels.count
         @genres = Genre.all
         @index = @genre.genre
-      end
+
+        if params[:sort_order].present?
+
+          case params[:sort_order]
+            when "new"
+              #latest　モデルで定義したscope
+              @novels = @novels.latest
+              @novels = @novels
+            when "old"
+              @novels = @novels.old
+              @novels = @novels
+            when "comment_count"
+
+              #kaminari 方がsortから、array（配列）になる。
+              @novels = @novels.includes(:reviews).sort {|a,b| b.reviews.count <=> a.reviews.count}
+              @novels = Kaminari.paginate_array(@novels)
+
+          end
+
+        end
+        #上の記述に書いてあったページネーションを削除し、最終的にページネーションさせる。
+          @novels = @novels.page(params[:page]).per(20)
+
+
+
+     end
+
+
 
 
   end
