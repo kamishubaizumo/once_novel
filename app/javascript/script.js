@@ -4,7 +4,7 @@ document.addEventListener("turbolinks:load", function() {
   // 処理内容
 
 
-		/*global $*/$(function(){
+	/*global $*/$(function(){
 			$("#back a").on("click",function(event){
 				$("body, html").animate({
 					scrollTop: 0,
@@ -22,7 +22,7 @@ document.addEventListener("turbolinks:load", function() {
 				$("#sp-menu").fadeToggle();
 				event.preventDefault();
 			});
-});
+	});
 })
 
 
