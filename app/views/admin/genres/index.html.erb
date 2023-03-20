@@ -17,14 +17,16 @@
   </div>
 </div>
 
-  <div class="col my-5 py-2">
-    <ul class="d-flex d-wrap py-3 justify-content-center">
+  <div class="row justify-content-center">
+    <div class="col-8 col-sm-5 row">
       <% @genres.each do |genres| %>
         <%= link_to edit_admin_genre_path(genres.id) do %>
-        <li class="col my-3">
+      <ul>
+        <li class="row-col-4">
           <%= genres.genre %>
         </li>
+      </ul>
         <% end %>
       <% end %>
-    </ul>
+    </div>
   </div>

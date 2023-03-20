@@ -2,18 +2,18 @@
   <h2>検索結果</h2>
 </div>
 
-<div class="container-fulid">
+<div class="container-fluid mt-5">
   <div class="row justify-content-center">
-    <div class="col-lg-10">
+    <div class="col-md-10">
 
-        <table class="table table-hover table-inverse">
           <!--検索対象モデルがUserの時 -->
           <% if @range == "User" %>
+          <table class="table table-hover table-inverse">
             <thead>
               <tr>
-                <th class="col-lg-4">ユーザーネーム</th>
-                <th class="col-lg-5">自己紹介</th>
-                <th class="col-lg-1">作品数</th>
+                <th scope="col" class="col-4">ユーザーネーム</th>
+                <th scope="col" class="col-4">自己紹介</th>
+                <th scope="col" class="col-2">作品数</th>
               </tr>
             </thead>
             <tbody>
@@ -36,46 +36,62 @@
                     <!--find([3,1,5]) # {[3...],[1...],[5...]} idの取得。そのまま取ってくる-->
                     <!--where(id: [3,1,5]) # {[1...],[3...],[5...]}　id以外も取得。降順で取得してくる-->
                   </td>
-
                 </tr>
               <% end %>
             </tbody>
-
+          </table>
           <% else %>
 
             <!--検索対象モデルがUserではない時(= 検索対象モデルがNovelの時) -->
-            <thead>
-              <tr>
-                <th class="col-lg-2">作家名</th>
-                <th class="col-lg-4">作品名</th>
-                <th class="col-lg-4">ログライン</th>
-                <th class="col-lg-3">ジャンル</th>
-              </tr>
-            </thead>
-            <tbody>
+
+
               <% @novels_public.each do |novel| %>
-                <tr>
-                  <td>
-                    <%= link_to user_path(novel.user.id) do %>
-                      <%= novel.user.name %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to novel_path(novel.id) do %>
-                      <%= novel.title %>
-                    <% end %>
-                  </td>
-                  <td><%= novel.logline %></td>
-                  <td>
-                    <% novel.genres.each do |genre| %>
-                      <%= genre.genre %>
-                    <% end %>
-                  </td>
-                </tr>
+                <div class="row border-top border-secondary">
+                  <div class="col-sm-8">
+                    <h4>
+                      <%= link_to novel_path(novel.id) do %>
+                        <%= novel.title %>
+                      <% end %>
+                    </h4>
+                    <p><b>ログライン:</b>
+                      <%= novel.logline %>
+                    </p>
+                    <p><b>作家名:</b>&nbsp;
+                      <%= link_to user_path(novel.user.id) do %>
+                        <%= novel.user.name %>
+                      <% end %>
+                    </p>
+                  </div>
+
+                  <div class="col">
+                    <table class="table">
+                      <tbody>
+                          <tr>
+                            <th scope="row">ジャンル:</th>
+                            <td>
+                              <% novel.genres.each do |genre| %>
+                                <%= genre.genre %>
+                              <% end %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">感想数:</th>
+                            <td>
+                              <%= novel.reviews.count %>
+                            </td>
+                          </tr>
+                          <tr><th scope="row">PV数:</th>
+                            <td>
+                              <%= novel.impressionist_count(:filter=>:session_hash) %>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               <% end %>
-            </tbody>
           <% end %>
-        </table>
+
 
     </div>
   </div>

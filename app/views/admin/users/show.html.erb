@@ -5,26 +5,32 @@
     <%= link_to user_path(@user.id) do %>
       <%= @user.name %>
     <% end %>
-  ・ステータス情報</h2>
+  ・ステータス
+  </h2>
 </div>
 
 
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-md-7">
 
       <table class="table">
+        <tbody>
+
         <tr>
-          <th class="col-lg-3">ユーザーネーム</th><td class="col-lg-5"><%= @user.name %></td>
+          <th scope="row">ユーザーネーム</th>
+          <td><%= @user.name %></td>
         </tr>
         <tr>
-          <th>自己紹介文</th><td><%= @user.infomation %></td>
+          <th scope="row">自己紹介文</th>
+          <td><%= @user.infomation %></td>
         </tr>
         <tr>
-          <th>メールアドレス</th><td><%= @user.email %></td>
+          <th scope="row">メールアドレス</th>
+          <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th>会員ステータス</th>
+          <th scope="row">会員ステータス</th>
           <td>
             <% if @user.is_deleted %>
               退会済み &nbsp;
@@ -35,6 +41,8 @@
             <% end %>
           </td>
         </tr>
+
+        </tbody>
       </table>
 
             <div class="text-center">
@@ -48,48 +56,57 @@
     <h3>作品一覧</h3>
 </div>
 
-<div class="container-fulid">
+<div class="container container-fluid mt-5">
   <div class="row justify-content-center">
-    <div class="col-lg-9">
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-lg-3">作品名</th>
-            <th class="col-lg-4">ログライン</th>
-            <th class="col-lg-2">ジャンル</th>
-            <th class="col-lg-2">コメント数</th>
-            <th class="col-lg-2">公開範囲</th>
-          </tr>
-        </thead>
+    <div class="col-lg-10">
 
 
-        <tbody>
-          <% @user.novels.each do |novel| %>
-            <tr>
-              <td>
+        <% @user.novels.each do |novel| %>
+        <div class="row border-top border-secondary">
+          <div class="col-md-8 mx-3 my-2">
+              <h3>
                 <%= link_to novel_path(novel.id) do %>
                   <%= novel.title %>
                 <% end %>
-              </td>
-              <td><%= novel.logline %></td>
-              <td>
-                <% novel.genres.each do |genre| %>
-                  <%= genre.genre %>
-                <% end %>
-              </td>
-              <td><%= novel.reviews.count %></td>
-              <td>
-                <% if novel.novel_status == "novel_public" %>公開
-                <% elsif novel.novel_status == "novel_private" %>非公開
-                <% else %>下書き
-                <% end %>
-              </td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
+              </h3>
+              <b>ログライン:</b>
+                <p><%= novel.logline %>
+              </p>
+          </div>
 
+
+          <div class="col">
+            <table class="table">
+              <tbody>
+                  <tr>
+                    <th scope="row">ジャンル:</th>
+                      <td>
+                        <% novel.genres.each do |genre| %>
+                          <%= genre.genre %>
+                        <% end %>
+                      </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">作品数:</th>
+                      <td>
+                        <%= novel.reviews.count %>
+                      </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">公開範囲:</th>
+                      <td>
+                        <% if novel.novel_status == "novel_public" %>公開
+                        <% elsif novel.novel_status == "novel_private" %>非公開
+                        <% else %>下書き
+                        <% end %>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <% end %>
 
     </div>
   </div>
