@@ -15,7 +15,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     root to: "users#index"
     resources :users, only:[:index,:show,:edit,:update]
-    resources :genres, only:[:index,:create,:edit,:update]
+    resources :genres, only:[:index,:create,:edit,:update, :destroy]
 
 
 

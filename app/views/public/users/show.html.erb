@@ -8,7 +8,7 @@
 
 
 
-    <div class="container-fulid mt-4">
+    <div class="container-fluid mt-4">
       <div class="row justify-content-center">
         <h3>
                                                 <!--enumで、0 = "novel_public"-->
@@ -24,27 +24,27 @@
         <table class="table text-left">
           <thead>
             <tr>
-              <th>作品名</th>
-              <th>ログライン</th>
-              <th>ジャンル</th>
-              <th>感想数</th>
+              <th scope="col">作品名</th>
+              <th scope="col">ログライン</th>
+              <th scope="col">ジャンル</th>
+              <th scope="col">感想数</th>
             </tr>
           </thead>
-          <tbody>
 
+          <tbody>
           <% @novels.each do |novel| %>
             <tr>
-              <td class="col-lg-4">
+              <td class="col-3">
                 <%= link_to "#{novel.title}",novel_path(novel.id) %>
               </td>
 
-              <td class="col-lg-5"><%= novel.logline %></td>
-              <td class="col-lg-2">
+              <td class="col-4"><%= novel.logline %></td>
+              <td class="col-auto">
                 <% novel.genres.each do |genre| %>
                   <%= genre.genre %>
                 <% end %>
               </td>
-              <td class="col-lg-1"><%= novel.reviews.count %></td>
+              <td><%= novel.reviews.count %></td>
             </tr>
           <% end %>
 
