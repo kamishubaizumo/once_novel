@@ -28,6 +28,7 @@
               <th scope="col">ログライン</th>
               <th scope="col">ジャンル</th>
               <th scope="col">感想数</th>
+              <th scope="col">PV数</th>
             </tr>
           </thead>
 
@@ -45,6 +46,7 @@
                 <% end %>
               </td>
               <td><%= novel.reviews.count %></td>
+              <td><%= novel.impressionist_count(:filter=>:session_hash) %></td>
             </tr>
           <% end %>
 

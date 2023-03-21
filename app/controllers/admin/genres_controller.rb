@@ -3,12 +3,6 @@ class Admin::GenresController < ApplicationController
   def index
     @genres = Genre.all
     @genre = Genre.new
-
-
-
-
-  # ジャンルの横にカウントを表示させたい。
-
   end
 
   def create
@@ -22,8 +16,6 @@ class Admin::GenresController < ApplicationController
        render :index
        flash[:notice] = "追加に失敗しました"
      end
-
-
   end
 
 

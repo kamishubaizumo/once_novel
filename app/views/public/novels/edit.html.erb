@@ -5,7 +5,7 @@
 <div class="container my-5">
   <div class="row justify-content-center">
     <%= form_with model: @novel do |f| %>
-      <lavel for="inputTitle">タイトル</lavel>
+      <lavel for="inputTitle">タイトル(2～50文字)</lavel>
       <%= f.text_field :title, autofocus: true, size: 100, id: "inputTitle", class: "form-control" %>
 
       <div class="my-2">
@@ -19,16 +19,16 @@
         <% end %>
       </div>
 
-      <lavel for="inputLogline">ログライン</lavel>
+      <lavel for="inputLogline">ログライン(10～100文字)</lavel>
         <%= f.text_area :logline, autofocus: true, size: "100x2", id: "inputLogline", class: "form-control"  %>
 
-      <lavel for="inputForeword">前書き</lavel>
+      <lavel for="inputForeword">前書き(0～300)</lavel>
         <%= f.text_area :foreword, autofocus: true, size: "100x5", id: "inputForeword", class: "form-control"  %>
 
-      <lavel for="inputBody">本文</lavel>
+      <lavel for="inputBody">本文(10～6000)</lavel>
         <%= f.text_area :body, autofocus: true,size: "100x50", id: "inputBody", class: "form-control"  %>
 
-      <lavel for="inputAfterword">後書き</lavel>
+      <lavel for="inputAfterword">後書き(0~300)</lavel>
         <%= f.text_area :afterword, autofocus: true, size: "100x5", id: "inputAfterword", class: "form-control"  %>
 
 

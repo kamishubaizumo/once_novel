@@ -3,23 +3,24 @@
 </div>
 
 <div class="container my-5">
-  <div class="row py-4 justify-content-center">
-    <div class="col-lg-4 text-center mt-5">
+  <div class="row my-4 justify-content-center">
+    <div class="col text-center mt-5">
 
       <%= form_with model:@genre, url:admin_genre_path, method: :patch do |f| %>
-        <table class="table mt-5 border-none">
-          <tr>
-            <th>
+          <div class="row justify-content-center">
+            <div class="col-sm-4 my-4">
               <%= f.text_field :genre %>
-            </th>
-            <td>
-              <%= f.submit "更新する", class: "btn btn-success" %>
-            </td>
-          </tr>
-        </table>
+            </div>
+            <div class="col-sm-3 my-2">
+              <%= f.submit "更新", class: "btn btn-success m-3" %>
+
+            <%= link_to "削除",admin_genre_path(@genre),method: :delete,
+            class: "btn btn-danger m-3",data: { confirm: "ジャンルを削除します" } %>
+            </div>
+          </div>
       <% end %>
 
-        <%= link_to "戻る", admin_genres_path, class: "btn btn-primary" %>
+        <%= link_to "戻る", admin_genres_path, class: "mt-5 m-3 btn btn-primary" %>
     </div>
   </div>
 </div>

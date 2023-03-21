@@ -47,7 +47,7 @@ class Public::NovelsController < ApplicationController
      #Genre.allではなく、Genre.params[:genre_id]で値をひとつ取ってくる。
         @genre = Genre.find(params[:genre_id])
 
-        #ジャンルからノベルら取ってきて、公開しているものを表示する。
+        #ジャンルからノベルを取ってきて、公開しているものを表示する。
         @novels = @genre.novels.where(novel_status: "novel_public")
         @novels_all = @genre.novels.count
         @genres = Genre.all
@@ -105,9 +105,10 @@ class Public::NovelsController < ApplicationController
     @write.user_id = current_user.id
 
     if @write.save
-      #中間テーブルに保存。novelとgenre_idの紐づけ。何をやってるのか理解はできていない。
+      #中間テーブルに保存。novelとgenre_idの紐づけ。
       @tag = Tag.new(novel_id: @write.id,genre_id: params[:novel][:genre_id])
-      #メンターさんに教わった。正直、まだよくわからない。
+      #ノベルIDは、投稿したノベルのID。ジャンルIDは、ノベルと、ジャンルIDに紐づける。
+      #new()内の処理が、まだ理解はできていない。
 
       @tag.save
       redirect_to novel_path(@write.id)

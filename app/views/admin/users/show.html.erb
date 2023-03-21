@@ -63,7 +63,7 @@
 
         <% @user.novels.each do |novel| %>
         <div class="row border-top border-secondary">
-          <div class="col-md-8 mx-3 my-2">
+          <div class="col-md-6 mx-3 my-2">
               <h3>
                 <%= link_to novel_path(novel.id) do %>
                   <%= novel.title %>
